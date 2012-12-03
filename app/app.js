@@ -22,6 +22,7 @@ app.configure(function() {
   app.use(express.cookieParser('your secret here'));
   app.use(express.session());
   app.use(app.router);
+  app.use(require('connect-assets')());
   app.use(require('stylus').middleware(__dirname + '/../public'));
   return app.use(express["static"](path.join(__dirname, '/../public')));
 });

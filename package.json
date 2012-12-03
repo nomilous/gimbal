@@ -10,7 +10,8 @@
     "express": "3.0.3",
     "jade": "*",
     "stylus": "*",
-    "which" : "*"
+    "which" : "*",
+    "connect-assets": "2.2.1"
   },
   "devDependencies": {
     "coffee-script": "*",

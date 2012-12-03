@@ -5,6 +5,7 @@ path = require 'path'
 
 app = express()
 
+
 app.configure ->
     #
     # most of this came from the express scaffold
@@ -20,6 +21,7 @@ app.configure ->
     app.use express.cookieParser('your secret here') # ??
     app.use express.session() # ??
     app.use app.router # ??
+    app.use require('connect-assets')()
     app.use require('stylus').middleware(__dirname + '/../public')
     app.use express.static( path.join( __dirname, '/../public' ))
 
