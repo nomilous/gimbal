@@ -2,8 +2,10 @@ doctype 5
 html
   head
     title= title
-    != js('manifest')
+    block scripts 
+        script(src='javascripts/three-r53/three.js')
     != css('gimbal')
 
   body
     block content
+    != js('manifest')

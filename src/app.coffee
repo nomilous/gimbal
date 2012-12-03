@@ -5,7 +5,6 @@ path = require 'path'
 
 app = express()
 
-
 app.configure ->
     #
     # most of this came from the express scaffold
@@ -26,7 +25,6 @@ app.configure ->
     app.use express.static( path.join( __dirname, '/../public' ))
 
 app.configure 'development', ->
-    console.log "DEV"
     app.use express.errorHandler()
 
 app.get '/', routes.index
