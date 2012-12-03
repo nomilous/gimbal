@@ -11,6 +11,10 @@ a game
 * [angular.js](http://angularjs.org/)
 * [three.js](https://github.com/mrdoob/three.js.git)
 
+### thanks
+
+* portions of the base scaffold where tailored from [this template](https://github.com/twilson63/express-coffee) 
+
 ### dev mode
 
 * assumes node.js installed

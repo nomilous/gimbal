@@ -1,0 +1,1 @@
+serverside routes refer to jade templates in /views
