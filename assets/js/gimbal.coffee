@@ -28,5 +28,5 @@ animate = ->
 
 
 
-init()
-animate()
+#init()
+#animate()

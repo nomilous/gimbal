@@ -11,6 +11,10 @@ a game
 * [angular.js](http://angularjs.org/)
 * [three.js](https://github.com/mrdoob/three.js.git)
 
+### also
+
+* [pointerlock api](http://www.html5rocks.com/en/tutorials/pointerlock/intro/)
+
 ### thanks
 
 * portions of the base scaffold where tailored from [this template](https://github.com/twilson63/express-coffee) 
