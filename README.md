@@ -14,6 +14,7 @@ a game
 ### also
 
 * [pointerlock api](http://www.html5rocks.com/en/tutorials/pointerlock/intro/)
+* [working example](https://plus.google.com/113862800338869870683/posts/L3uVi8w6pie)
 
 ### thanks
 

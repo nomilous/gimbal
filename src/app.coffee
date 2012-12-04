@@ -1,5 +1,6 @@
 express = require 'express'
 routes = require __dirname + '/routes'
+templates = require __dirname + '/routes/templates'
 http = require 'http'
 path = require 'path'
 
@@ -28,6 +29,8 @@ app.configure 'development', ->
     app.use express.errorHandler()
 
 app.get '/', routes.index
+app.get '/templates/:template', templates.render
+
 
 http.createServer(app).listen app.get('port'), ->
     console.log 'Express server listening on port ' + app.get('port')

@@ -1,8 +1,11 @@
 doctype 5
-html
+html( ng-app = 'gimbal' )
   head
     title= title
     block scripts 
+        script(src='javascripts/angular-1.0.2/angular.js')
+        script(src='javascripts/angular-ui-0.3.1/angular-ui.js')
+        script(src='javascripts/namespace.coffee-1.0.1/namespace.js')
         script(src='javascripts/three-r53/three.js')
     != css('gimbal')
 
