@@ -13,7 +13,8 @@
     "which" : "*",
     "connect-assets": "2.2.1",
     "connect-redis": "*",
-    "redis": "*" 
+    "redis": "*",
+    "mongodb": "*"
   },
   "devDependencies": {
     "coffee-script": "*",

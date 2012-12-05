@@ -24,11 +24,12 @@ a game
 
 * assumes node.js installed
 * assumes cake is in $PATH 
+* assumes [foreman](https://github.com/ddollar/foreman) in installed
 
 <pre>
 
     $ npm install
-    $ cake dev
+    $ foreman start --procfile=Procfile.dev
 
 </pre>
 

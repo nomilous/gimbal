@@ -1,8 +1,16 @@
 express    = require 'express'
 http       = require 'http'
 path       = require 'path'
+
 RedisStore = require('connect-redis')(express)
 redis      = require("redis").createClient()
+
+Db         = require('mongodb').Db
+Connection = require('mongodb').Connection
+Server     = require('mongodb').Server
+BSON       = require('mongodb').BSON
+ObjectID   = require('mongodb').ObjectID
+
 routes     = require __dirname + '/routes'
 templates  = require __dirname + '/routes/templates'
 
