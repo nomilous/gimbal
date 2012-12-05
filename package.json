@@ -14,7 +14,9 @@
     "connect-assets": "2.2.1",
     "connect-redis": "*",
     "redis": "*",
-    "mongodb": "*"
+    "mongodb": "*",
+    "passport": "*",
+    "passport-local": "*"
   },
   "devDependencies": {
     "coffee-script": "*",
