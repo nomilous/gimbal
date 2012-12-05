@@ -11,7 +11,9 @@
     "jade": "*",
     "stylus": "*",
     "which" : "*",
-    "connect-assets": "2.2.1"
+    "connect-assets": "2.2.1",
+    "connect-redis": "*",
+    "redis": "*" 
   },
   "devDependencies": {
     "coffee-script": "*",
