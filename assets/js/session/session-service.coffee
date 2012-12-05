@@ -11,6 +11,6 @@ namespace 'gimbal'
             http.post '/login'
 
                 username : 'test'
-                password : 'inG'
+                password : 'ing'
 
             return this
