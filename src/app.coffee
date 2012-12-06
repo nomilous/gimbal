@@ -73,9 +73,8 @@ app.configure ->
     app.use require('stylus').middleware(__dirname + '/../public')
     app.use express.static( path.join( __dirname, '/../public' ))
 
-    app.use ebb.configure
-
-        some: 'config'
+    app.use ebb.configure app, 
+        actors : require './models/actor'
 
 
 app.configure 'development', ->

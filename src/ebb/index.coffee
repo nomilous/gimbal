@@ -1,16 +1,35 @@
 class Ebb
 
-    @configure : (conf) -> 
+    @render : (req, res) -> 
 
-        console.log "Ebb.configure()", conf
+        res.send req.ebb.model.get( req.ebb.id )
+
+
+    @gotModel : (req) ->
+
+        route = req.path.match /^\/(\w{1,})\/(\S{1,})/ 
+        return false unless route[1] and route[2]
         
-        return (req, res, next) -> 
+        if @models[ route[1] ]
 
-            #
-            # do nothing, pass to next handler
-            # 
+            req['ebb'] = 
+                model: @models[ route[1] ]
+                id: route[2]
 
-            next()
+            return true
+
+        return false
+
+    @configure : (app, @models) -> 
+
+        @env = app.get 'env'
+        console.log "Ebb.configure()", @env, @models
+
+        return (req, res, next) => 
+            #return next() unless req.is 'json'
+            #return next() unless req.is 'application/json'
+            return next() unless @gotModel req
+            @render req, res
 
 
 module.exports = Ebb
