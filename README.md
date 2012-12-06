@@ -29,7 +29,16 @@ a game
 <pre>
 
     $ npm install
-    $ foreman start --procfile=Procfile.dev
+
+    # 
+    # starts redis and mongo
+    # 
+    $ foreman start --procfile=Procfile.support
+
+    #
+    # starts app (another terminal)
+    #
+    $ cake dev
 
 </pre>
 
