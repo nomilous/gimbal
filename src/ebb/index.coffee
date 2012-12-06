@@ -8,17 +8,14 @@ class Ebb
     @gotModel : (req) ->
 
         route = req.path.match /^\/(\w{1,})\/(\S{1,})/ 
-        return false unless route[1] and route[2]
+        return false unless @models[ route[1] ] and route[2]
         
-        if @models[ route[1] ]
+        req['ebb'] = 
+            model: @models[ route[1] ]
+            id: route[2]
 
-            req['ebb'] = 
-                model: @models[ route[1] ]
-                id: route[2]
+        return true
 
-            return true
-
-        return false
 
     @configure : (app, @models) -> 
 

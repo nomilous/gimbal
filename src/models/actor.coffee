@@ -3,7 +3,7 @@ class Actor
     @get : (id) -> 
 
         return {
-            actor: "actor",
+            actor: "      pending Mongoose     ",
             id: id
         }
 
