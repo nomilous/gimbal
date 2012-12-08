@@ -2,9 +2,7 @@ class Actor
 
     @get : (id) -> 
 
-        return {
-            actor: "      pending Mongoose     ",
-            id: id
-        }
-
+        actor : {}
+        id    : id
+        
 module.exports = Actor

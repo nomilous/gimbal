@@ -11,7 +11,7 @@ Server     = require('mongodb').Server
 BSON       = require('mongodb').BSON
 ObjectID   = require('mongodb').ObjectID
 
-ebb        = require('ebb')
+rest       = require('ebb').Rest
 
 passport   = require('passport')
 LocalStrategy = require('passport-local').Strategy
@@ -73,8 +73,11 @@ app.configure ->
     app.use require('stylus').middleware(__dirname + '/../public')
     app.use express.static( path.join( __dirname, '/../public' ))
 
-    app.use ebb.configure app, 
-        actors : require './models/actor'
+    app.use rest.config
+        app: app
+        models: 
+            actors: require './models/actor'
+            maps: require './models/map'
 
 
 app.configure 'development', ->
