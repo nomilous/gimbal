@@ -11,7 +11,7 @@ Server     = require('mongodb').Server
 BSON       = require('mongodb').BSON
 ObjectID   = require('mongodb').ObjectID
 
-ebb        = require('./ebb')
+ebb        = require('ebb')
 
 passport   = require('passport')
 LocalStrategy = require('passport-local').Strategy

@@ -36,7 +36,7 @@ task 'dev', 'Start development environment', ->
 
     supervisor = spawn 'node', [
         './node_modules/supervisor/lib/cli-wrapper.js',
-        '-w','app,views', 
+        '-w','app,views,node_modules/ebb', 
         '-e', 'js|jade', 
         'server'
     ]
