@@ -2,9 +2,6 @@ express    = require 'express'
 http       = require 'http'
 path       = require 'path'
 
-RedisStore = require('connect-redis')(express)
-redis      = require("redis").createClient()
-
 Db         = require('mongodb').Db
 Connection = require('mongodb').Connection
 Server     = require('mongodb').Server
@@ -15,7 +12,7 @@ ObjectID   = require('mongodb').ObjectID
 #
 # This module is being developed inline
 # 
-rest       = require('et').Rest
+et         = require 'et'
 # 
 # cd node_modules
 # git clone git@github.com:nomilous/et.git
@@ -57,11 +54,15 @@ app        = express()
 
 app.configure ->
 
-    app.use express.cookieParser()
-    app.use express.session
-        secret: process.env.CLIENT_SECRET or 'secret'
-        maxAge : new Date Date.now() + 7200000
-        store: new RedisStore {client: redis}
+    app.use et.al
+        app: app
+        session: 
+            secret: 'secret'
+        models:
+            actors: require './models/actor'
+            maps: require './models/map'
+
+
     app.use express.query()
 
     app.use passport.initialize()
@@ -80,13 +81,6 @@ app.configure ->
     app.use require('connect-assets')()
     app.use require('stylus').middleware(__dirname + '/../public')
     app.use express.static( path.join( __dirname, '/../public' ))
-
-    app.use rest.config
-        app: app
-        models: 
-            actors: require './models/actor'
-            maps: require './models/map'
-
 
 app.configure 'development', ->
 

@@ -35,6 +35,7 @@ a game
     # 
     cd node_modules
     git clone git@github.com:nomilous/et.git
+    git checkout develop
 
 
     # 
