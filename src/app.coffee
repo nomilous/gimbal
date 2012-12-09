@@ -18,34 +18,6 @@ et         = require 'et'
 # git clone git@github.com:nomilous/et.git
 # 
 
-passport   = require('passport')
-LocalStrategy = require('passport-local').Strategy
-# OAuthStrategy = require('passport-oauth').OAuthStrategy
-
-user = 
-    id: '12345'
-    username: 'test'
-    password: 'ing'
-    
-passport.use new LocalStrategy (username, password, done) ->
-    console.log 'Passport validating', username, password
-    # done err
-    if username == user.username and password == user.password
-        return done null, user
-    done null, false,
-        message: 'Invalid username or password.'
-
-passport.serializeUser (user, done) -> 
-    console.log 'Passport serializing', user, 'to session'
-    done null, user.id
-
-passport.deserializeUser (id, done) -> 
-    console.log 'Passport deserialize', id, 'from session'
-    # pretend get user from db
-    err = null
-    done err, user
-
-
 routes     = require __dirname + '/routes'
 templates  = require __dirname + '/routes/templates'
 
@@ -58,12 +30,14 @@ app.configure ->
         app: app
         session: require './config/session'
         models: require './models'
+        auth:
+            validator: (user, pass) -> 
+                user: user
+                info: 'fake auth, pending user model later'
+                id: '1'
 
 
     app.use express.query()
-
-    app.use passport.initialize()
-    app.use passport.session()
 
     app.set 'port', process.env.PORT || 3000
     app.set 'views', __dirname + '/../views'
@@ -84,8 +58,8 @@ app.configure 'development', ->
     app.use express.errorHandler()
 
 
-app.post '/login', passport.authenticate('local'), (req, res) -> 
-    res.send( JSON.stringify user )
+# app.post '/login', passport.authenticate('local'), (req, res) -> 
+#     res.send( JSON.stringify user )
 app.get '/', routes.index
 app.get '/templates/:template', templates.render
 
