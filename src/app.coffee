@@ -56,11 +56,8 @@ app.configure ->
 
     app.use et.al
         app: app
-        session: 
-            secret: 'secret'
-        models:
-            actors: require './models/actor'
-            maps: require './models/map'
+        session: require './config/session'
+        models: require './models'
 
 
     app.use express.query()
@@ -95,16 +92,4 @@ app.get '/templates/:template', templates.render
 
 http.createServer(app).listen app.get('port'), ->
     console.log 'Express server listening on port ' + app.get('port')
-
-
-
-# #
-# # Heroku redistogo connection
-# #
-# if process.env.REDISTOGO_URL
-#   rtg   = require('url').parse process.env.REDISTOGO_URL
-#   redis = require('redis').createClient rtg.port, rtg.hostname
-#   redis.auth rtg.auth.split('username:password')[1]
-# else
-#   redis = require("redis").createClient()
 
