@@ -11,7 +11,15 @@ Server     = require('mongodb').Server
 BSON       = require('mongodb').BSON
 ObjectID   = require('mongodb').ObjectID
 
-rest       = require('ebb').Rest
+
+#
+# This module is being developed inline
+# 
+rest       = require('et').Rest
+# 
+# cd node_modules
+# git clone git@github.com:nomilous/et.git
+# 
 
 passport   = require('passport')
 LocalStrategy = require('passport-local').Strategy

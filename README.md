@@ -30,6 +30,13 @@ a game
 
     $ npm install
 
+    #
+    # and, while 'et' is being developed inline
+    # 
+    cd node_modules
+    git clone git@github.com:nomilous/et.git
+
+
     # 
     # starts redis and mongo
     # 
