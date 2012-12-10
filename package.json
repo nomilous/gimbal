@@ -15,9 +15,7 @@
     "connect-redis": "*",
     "redis": "*",
     "mongodb": "*",
-    "mongoose": "*",
-    "passport": "*",
-    "passport-local": "*"
+    "mongoose": "*"
   },
   "devDependencies": {
     "coffee-script": "*",

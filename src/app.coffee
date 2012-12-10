@@ -30,11 +30,6 @@ app.configure ->
         app: app
         session: require './config/session'
         models: require './models'
-        auth:
-            validator: (user, pass) -> 
-                user: user
-                info: 'fake auth, pending user model later'
-                id: '1'
 
 
     app.use express.query()
@@ -44,8 +39,6 @@ app.configure ->
     app.set 'view engine', 'jade'
 
     app.use express.favicon() 
-    app.use express.logger('dev')
-    app.use express.bodyParser() # ?? 
     app.use express.methodOverride() # ?? 
     app.use app.router # ??
 
@@ -58,8 +51,6 @@ app.configure 'development', ->
     app.use express.errorHandler()
 
 
-# app.post '/login', passport.authenticate('local'), (req, res) -> 
-#     res.send( JSON.stringify user )
 app.get '/', routes.index
 app.get '/templates/:template', templates.render
 
