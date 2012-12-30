@@ -1,0 +1,16 @@
+{
+  "name": "gimbal",
+  "description": "a game - pre release",
+  "version": "0.0.0",
+  "author": "nomilous <nomilous@gmail.com>",
+  "contributors": [
+    {
+      "name": "nomilous",
+      "email": "nomilous@gmail.com"
+    }
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
