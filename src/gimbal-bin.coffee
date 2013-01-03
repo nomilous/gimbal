@@ -1,1 +1,5 @@
-module.exports = -> console.log 'gimbal'
+module.exports = -> 
+    
+    return close: -> 
+
+        'fake close() function'
