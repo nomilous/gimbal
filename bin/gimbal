@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+// -*- js -*-
+require( '../lib/gimbal-bin')()

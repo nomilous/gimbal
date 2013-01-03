@@ -9,8 +9,15 @@
       "email": "nomilous@gmail.com"
     }
   ],
+  "bin": {
+    "gimbal": "./bin/gimbal"
+  },
   "dependencies": {
+    "plex": "0.0.1"
   },
   "devDependencies": {
+    "hound": "~1.0.4",
+    "coffee-script": "~1.4.0",
+    "mocha": "~1.7.4"
   }
 }
