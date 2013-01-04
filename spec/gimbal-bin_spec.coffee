@@ -4,7 +4,7 @@ request = require 'request'
 describe "gimbal-bin", ->
 
     server = undefined
-    port   = 3333
+    port   = 22222
     uri    = "http://localhost:#{  port  }"
 
 
@@ -15,8 +15,21 @@ describe "gimbal-bin", ->
     after -> 
         server.close()
 
-    it "starts the server", (done) ->
+    it 'starts the server', (done) ->
 
         request uri, (error, response, body) ->
             response.statusCode.should.equal 200
             done()
+
+
+    it 'has a listening websocket', (passTest) -> 
+
+        require('socket.io-client')
+
+            .connect("http://localhost:#{  port  }")
+
+                .on 'connect', -> 
+
+                    passTest() 
+
+                        # because it did connect
