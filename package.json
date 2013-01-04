@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "plex": "0.0.2",
-    "et": "git://github.com/nomilous/et.git#develop"
+    "et": "0.0.3"
   },
   "devDependencies": {
     "hound": "~1.0.4",
