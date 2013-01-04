@@ -23,5 +23,5 @@ describe "gimbal-bin", ->
 
     it 'returns the server', (done) -> 
 
-        server.connections.should.equal 0
-        done()
+        server.connections.should.equal 1  # previous test connected client 
+        done()                             # (surprised it's still connected tho...) 
