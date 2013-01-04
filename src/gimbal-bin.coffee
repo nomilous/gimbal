@@ -1,5 +1,8 @@
-module.exports = -> 
-    
-    return close: -> 
+app    = require('express')() 
+gimbal = require './gimbal'
 
-        'fake close() function'
+module.exports = (port = 3000) -> 
+
+    app.get '/', (req, res) -> res.send ''
+    app.use gimbal
+    app.listen port

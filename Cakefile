@@ -42,11 +42,13 @@ watchSpecDir = ->
         changed file
 
 
-
-
 task 'dev', 'Run dev/spec', ->
     watchSpecDir()
     watchSrcDir()
+
+
+task 'spec', 'Run all tests', -> 
+    runSpec './spec'
 
 
 task 'build', 'Build', ->

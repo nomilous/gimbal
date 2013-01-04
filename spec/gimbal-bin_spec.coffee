@@ -9,7 +9,7 @@ describe "gimbal-bin", ->
 
 
     before (done) ->
-        server = require('../src/gimbal-bin')()
+        server = require('../src/gimbal-bin')(port)
         done()
 
     after -> 

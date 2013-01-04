@@ -13,7 +13,8 @@
     "gimbal": "./bin/gimbal"
   },
   "dependencies": {
-    "plex": "0.0.1"
+    "plex": "0.0.1",
+    "express": "~3.0.5"
   },
   "devDependencies": {
     "hound": "~1.0.4",
