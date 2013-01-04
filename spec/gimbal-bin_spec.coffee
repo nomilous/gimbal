@@ -15,9 +15,13 @@ describe "gimbal-bin", ->
     after -> 
         server.close()
 
-
-    it "starts the game server", (done) ->
+    it "starts the server", (done) ->
 
         request uri, (error, response, body) ->
             response.statusCode.should.equal 200
             done()
+
+    it 'returns the server', (done) -> 
+
+        server.connections.should.equal 0
+        done()
