@@ -2,11 +2,13 @@ plex    = require 'plex'
 et      = require 'et'
 gimbal  = require './gimbal'
 
+
 module.exports = (port = 3000) -> 
 
     context = plex.start
 
         mode: 'proxy'
+
         connect:
 
             #
@@ -19,12 +21,19 @@ module.exports = (port = 3000) ->
         listen:
 
             #
-            # downlink to local game instance(s)
+            # downlinks:
+            # 
+            # - to local game viewports (browser)
+            # - to game control 'pad' (android/ios app)
             # 
 
             adaptor: 'socket.io'
             server: et.al
                 port: port
+
+
+        protocol: require './protocol'
+
 
     context.listen.server.get '/', (req, res) -> res.send ''
 
