@@ -27,6 +27,6 @@ module.exports = (port = 3000) ->
             # 
 
             adaptor: 'socket.io'
-            app: app.listen port
+            server: app.listen port
 
-    return context.listen.app
+    return context.listen.server
