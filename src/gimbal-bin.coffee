@@ -1,12 +1,8 @@
-express = require 'express'
 plex    = require 'plex'
+et      = require 'et'
 gimbal  = require './gimbal'
-app     = express()
 
 module.exports = (port = 3000) -> 
-
-    app.get '/', (req, res) -> res.send ''
-    app.use gimbal
 
     context = plex.start
 
@@ -27,6 +23,9 @@ module.exports = (port = 3000) ->
             # 
 
             adaptor: 'socket.io'
-            server: app.listen port
+            server: et.al
+                port: port
+
+    context.listen.server.get '/', (req, res) -> res.send ''
 
     return context.listen.server

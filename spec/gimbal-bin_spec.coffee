@@ -20,8 +20,3 @@ describe "gimbal-bin", ->
         request uri, (error, response, body) ->
             response.statusCode.should.equal 200
             done()
-
-    it 'returns the server', (done) -> 
-
-        server.connections.should.equal 1  # previous test connected client 
-        done()                             # (surprised it's still connected tho...) 
