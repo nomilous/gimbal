@@ -1,5 +1,8 @@
 module.exports = (subscribe, publish, edge, context) -> 
 
+    id = edge.localId()
+    viewports = undefined
+
     subscribe 'event:register:controller', (primaryViewportID) -> 
 
         #
@@ -10,8 +13,6 @@ module.exports = (subscribe, publish, edge, context) ->
 
         context.gimbal ||= {}
         context.gimbal.controllers ||= {}
-
-        id = edge.localId()
 
         context.gimbal.controllers[ id ] = 
 
@@ -35,8 +36,15 @@ module.exports = (subscribe, publish, edge, context) ->
 
             viewports: []
 
-
         context.gimbal.controllers[ id ].viewports.push primaryViewportID
+
+
+        #
+        # pupulate reference to registered viewports
+        #
+
+        viewports = context.gimbal.controllers[ id ].viewports
+
 
         #
         # send ack
@@ -53,11 +61,9 @@ module.exports = (subscribe, publish, edge, context) ->
 
         console.log 'RECEIVED: event:controller %s', JSON.stringify payload
 
-        id = edge.localId()
+        return unless viewports
 
-        registeredViewports = context.gimbal.controllers[id].viewports
-
-        for viewportID in registeredViewports
+        for viewportID in viewports
 
             send = context.gimbal.viewports[viewportID].getPublisher()
             send payload.event, payload.payload
