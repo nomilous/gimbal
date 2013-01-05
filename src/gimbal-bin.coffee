@@ -28,8 +28,12 @@ module.exports = (port = 3000) ->
             # 
 
             adaptor: 'socket.io'
+
             server: et.al
+
                 port: port
+                session: false
+                auth: false
 
             onConnect: (edge) -> 
 
