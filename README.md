@@ -10,6 +10,6 @@ a node based 'game'
 
 ```
 
-[in browser viewport](http://localhost:3000)
-pending [android controller](git@github.com:nomilous/gimbal-android.git)
+[in browser viewport](http://localhost:3000) <br />
+pending [android controller](https://github.com/nomilous/gimbal-android)
 

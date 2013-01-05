@@ -49,7 +49,7 @@ module.exports = (subscribe, publish, edge, context) ->
         qr = qrCode.qrcode 3, 'L'
         qr.addData connectSpec
         qr.make()
-        imageTag = qr.createImgTag 3
+        imageTag = qr.createImgTag 6
 
         #
         # send the imageTag to the viewport
