@@ -53,7 +53,12 @@ module.exports = (subscribe, publish, edge, context) ->
 
         console.log 'RECEIVED: event:controller %s', JSON.stringify payload
 
-        for id of context.gimbal.viewports
+        id = edge.localId()
 
-            context.gimbal.viewports[id].getPublisher() payload.event, payload.payload
+        registeredViewports = context.gimbal.controllers[id].viewports
+
+        for viewportID in registeredViewports
+
+            send = context.gimbal.viewports[viewportID].getPublisher()
+            send payload.event, payload.payload
 
