@@ -1,4 +1,5 @@
-os = require 'os'
+os     = require 'os'
+qrCode = require 'qrcode-npm'
 
 module.exports = (subscribe, publish, edge, context) -> 
 
@@ -8,8 +9,6 @@ module.exports = (subscribe, publish, edge, context) ->
         context.gimbal ||= {}
         context.gimbal.viewports ||= {}
         context.gimbal.viewports[ edge.localId() ] = edge
-
-        console.log edge
 
         url = context.listen.server.url
 
@@ -41,4 +40,21 @@ module.exports = (subscribe, publish, edge, context) ->
 
                 throw 'could not find wifi LAN ip'
 
-        console.log "URL:", url
+        #
+        # generate a QR code imageTag with connectSpec for 
+        # this viewport
+        #
+
+        connectSpec = "#{ url } #{ edge.localId() }"
+        qr = qrCode.qrcode 3, 'L'
+        qr.addData connectSpec
+        qr.make()
+        imageTag = qr.createImgTag 3
+
+        #
+        # send the imageTag to the viewport
+        #
+
+        publish 'event:register:viewport:ok', imageTag
+
+
