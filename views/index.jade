@@ -1,3 +1,30 @@
 doctype 5
 html
-    body| pending
+
+  head
+    block scripts
+      script(src='/socket.io/socket.io.js')
+
+  body
+
+    #container
+
+    script(type='text/javascript')
+
+      var socket = io.connect('http://localhost')
+
+      //
+      // register viewport
+      //
+      socket.on( 'event:client:start', function(data) {
+        socket.emit('event:register:viewport')
+      });
+
+
+      //
+      // display QRcode
+      //
+      socket.on( 'event:register:viewport:ok', function(imageTag) {
+        document.getElementById('container').innerHTML = imageTag
+      });
+
