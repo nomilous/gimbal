@@ -28,3 +28,14 @@ html
         document.getElementById('container').innerHTML = imageTag
       });
 
+
+      //
+      // controller event 
+      // more hackery just to see it working...
+      // 
+      // pending clientside script stack
+      //
+
+      socket.on( 'event:orient', function(xyz) {
+        document.getElementById('container').innerHTML = xyz
+      });
