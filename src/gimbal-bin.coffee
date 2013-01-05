@@ -34,8 +34,7 @@ module.exports = (port = 3000) ->
             onConnect: (edge) -> 
 
                 #
-                # client connected, 
-                # send 'event:start' (to initiate protocol)
+                # client connected, initiate protocol
                 #
 
                 edge.getPublisher() 'event:client:start'

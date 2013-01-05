@@ -6,7 +6,6 @@ describe "gimbal-bin", ->
     server = undefined
     port   = 22222
 
-
     before (done) ->
         server = require('../src/gimbal-bin')(port)
         done()
@@ -23,7 +22,7 @@ describe "gimbal-bin", ->
                 response.statusCode.should.equal 200
                 done()
 
-    
+
     it 'sends event:client:start when websocket client connects', (passTest) -> 
 
         require('socket.io-client')
