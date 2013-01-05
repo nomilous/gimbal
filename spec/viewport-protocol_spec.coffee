@@ -1,13 +1,11 @@
 should     = require 'should'
 MockClient = require '../src/mock-client'
 
-
-describe 'protocol', -> 
+describe 'viewport-protocol', -> 
 
     context  = undefined
     port     = 22222
     viewport = undefined
-
 
     before (done) ->
         context = require('../src/gimbal-bin')(port)
