@@ -9,6 +9,8 @@ module.exports = (subscribe, publish, edge, context) ->
         context.gimbal.viewports ||= {}
         context.gimbal.viewports[ edge.localId() ] = edge
 
+        console.log edge
+
         url = context.listen.server.url
 
         if url.match /\/\/0\.0\.0\.0/
@@ -18,10 +20,6 @@ module.exports = (subscribe, publish, edge, context) ->
             # 
             # need to find a LAN accessable ip to 
             # connect the controller to
-            #
-
-            #
-            # TODO: it needs to be the wifi interface
             #
 
             ifaces = os.networkInterfaces()
@@ -35,5 +33,12 @@ module.exports = (subscribe, publish, edge, context) ->
 
                     url = url.replace '0.0.0.0', details.address
 
+                    #
+                    # TODO: it needs to be the wifi interface
+                    #
+
+            if url.match /\/\/0\.0\.0\.0/
+
+                throw 'could not find wifi LAN ip'
 
         console.log "URL:", url
