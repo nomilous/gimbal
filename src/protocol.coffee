@@ -57,3 +57,9 @@ module.exports = (subscribe, publish, edge, context) ->
 
         publish 'event:register:viewport:ok', imageTag
 
+
+    subscribe 'event:register:controller', (payload) -> 
+
+        console.log "REGISTER CONTROLLER ", edge.localId()
+
+        publish 'event:register:controller:ok', ''
