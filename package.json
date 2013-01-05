@@ -13,7 +13,7 @@
     "gimbal": "./bin/gimbal"
   },
   "dependencies": {
-    "plex": "0.0.2",
+    "plex": "0.0.4",
     "et": "0.0.3"
   },
   "devDependencies": {

@@ -2,7 +2,7 @@ ioClient = require 'socket.io-client'
 
 module.exports = class MockClient
 
-    constructor: (port, mode, @watchResponseEvent, @toCallback) -> 
+    constructor: (port, mode, wait, toCallback) -> 
 
         #
         # <mode> 
@@ -10,17 +10,11 @@ module.exports = class MockClient
         #   controller - behaves like the android/ios app
         # 
 
-        @socket = ioClient.connect "http://localhost:#{ port }"
+        @connection = ioClient.connect "http://localhost:#{ port }"
 
-        @socket.on 'event:client:start', (payload) => 
+        @connection.on 'event:client:start', (payload) => 
 
-            @respond "event:register:#{ mode }", pending: 'DATA'
+            @connection.emit "event:register:#{ mode }", pending: 'DATA'
 
-            
-    respond: (event, payload) -> 
+        setTimeout (-> toCallback()), wait
 
-        @socket.emit event, payload
-
-        if event == @watchResponseEvent
-
-            @toCallback()

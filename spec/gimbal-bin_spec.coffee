@@ -3,15 +3,15 @@ request  = require 'request'
 
 describe "gimbal-bin", ->
 
-    server = undefined
-    port   = 22222
+    context = undefined
+    port    = 22222
 
     before (done) ->
-        server = require('../src/gimbal-bin')(port)
+        context = require('../src/gimbal-bin')(port)
         done()
 
     after -> 
-        server.close()
+        context.listen.server.close()
 
     it 'has a listening http server', (done) ->
 

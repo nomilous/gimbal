@@ -45,4 +45,4 @@ module.exports = (port = 3000) ->
 
     context.listen.server.get '/', (req, res) -> res.send ''
 
-    return context.listen.server
+    return context

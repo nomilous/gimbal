@@ -4,23 +4,22 @@ MockClient = require '../src/mock-client'
 
 describe 'protocol', -> 
 
-    server = undefined
-    port   = 22222
+    context  = undefined
+    port     = 22222
+    viewport = undefined
+
 
     before (done) ->
-        server = require('../src/gimbal-bin')(port)
-        done()
+        context = require('../src/gimbal-bin')(port)
+        viewport = new MockClient port, 'viewport', 500, -> done()
 
     after -> 
-        server.close()
+        viewport.connection.disconnect()
+        context.listen.server.close()
 
-    it """enables distinguishing between an attaching browser viewport
-          and an andrid/ios controller""", (done) -> 
-
-        viewportClient   = new MockClient port, 'viewport'
-        controllerClient = new MockClient port, 'controller', 'event:register:controller', -> done()
-
+    it 'has a viewports array in context'
 
     it 'enables viewport bind to controller via QR codes'
 
     it 'enables broadcasting inbound controller events to the associated (bound) viewport(s)'
+
