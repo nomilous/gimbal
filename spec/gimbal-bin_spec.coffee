@@ -1,5 +1,5 @@
-should  = require 'should'
-request = require 'request'
+should   = require 'should'
+request  = require 'request'
 
 describe "gimbal-bin", ->
 
@@ -23,15 +23,14 @@ describe "gimbal-bin", ->
                 response.statusCode.should.equal 200
                 done()
 
-
-    it 'has a listening websocket', (passTest) -> 
+    
+    it 'sends event:client:start when websocket client connects', (passTest) -> 
 
         require('socket.io-client')
 
             .connect("http://localhost:#{ port }")
 
-                .on 'connect', -> 
+                .on 'event:client:start', (payload) -> 
 
-                    passTest() 
-
-                        # because it did connect
+                    @disconnect()
+                    passTest()
