@@ -8,14 +8,27 @@ describe 'controller-protocol', ->
     controller = undefined
     clientid   = undefined
 
+    viewportReceived = {}
 
     before (done) ->
 
         context = require('../src/gimbal-bin')(port)
+
+        # 
+        # mock registered primary viewport with publisher 
+        #
+
+        context.gimbal = 
+            viewports: 
+                PRIMARY_VIEWPORT_ID:
+                    getPublisher: -> 
+                        return (event, payload) -> 
+                            viewportReceived[event] = payload
+
         controller = new MockClient port, 'controller', 500, -> 
 
             #
-            # gives cliet 500 mills to connect and stuff
+            # gives client 500 mills to connect and stuff
             #
 
             clientid = controller.connection.socket.sessionid
@@ -43,5 +56,24 @@ describe 'controller-protocol', ->
         done()
 
     
-    it 'it broadcasts inbound controller events to all associated (bound) viewport(s)'
+    it 'broadcasts inbound controller events to all associated (bound) viewport(s)', (done) ->
+
+        #
+        # generate a fake controller event across the socket
+        #
+
+        controller.send 'event:controller', {
+
+            event: 'event:code'
+            payload: 'DATA'
+
+        }, 500, ->
+
+            #
+            # and wait a spot...
+            # before testing that it would have been sent to the viewport
+            #
+
+            viewportReceived['event:code'].should.equal 'DATA'
+            done()
 

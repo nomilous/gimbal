@@ -44,3 +44,16 @@ module.exports = (subscribe, publish, edge, context) ->
 
         publish 'event:register:controller:ok'
 
+
+    subscribe 'event:controller', (payload) -> 
+
+        #
+        # Controller events are broadcast to all associated viewports
+        #
+
+        console.log 'RECEIVED: event:controller %s', JSON.stringify payload
+
+        for id of context.gimbal.viewports
+
+            context.gimbal.viewports[id].getPublisher() payload.event, payload.payload
+

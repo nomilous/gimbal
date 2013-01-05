@@ -66,3 +66,11 @@ module.exports = class MockClient
 
             @received['event:register:controller:ok'] = payload
 
+
+
+
+    send: (event, payload, wait, callback) -> 
+
+        @connection.emit event, payload
+
+        setTimeout (-> callback()), wait
