@@ -39,5 +39,3 @@ module.exports = class MockClient
             
             @received['event:register:viewport:ok'] = payload
 
-
-        

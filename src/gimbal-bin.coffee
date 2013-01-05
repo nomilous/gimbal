@@ -44,7 +44,7 @@ module.exports = (port = 3000) ->
                 edge.getPublisher() 'event:client:start'
 
 
-        protocol: require './protocol'
+        protocol: require './protocols'
 
 
     #

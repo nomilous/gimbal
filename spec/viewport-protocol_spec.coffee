@@ -29,6 +29,3 @@ describe 'protocol', ->
         viewport.received['event:register:viewport:ok'].should.match /image\/gif;base64/
         done()
 
-    it 'enables broadcasting inbound controller events to the associated (bound) viewport(s)'
-
-
