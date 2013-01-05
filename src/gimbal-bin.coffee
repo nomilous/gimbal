@@ -43,6 +43,20 @@ module.exports = (port = 3000) ->
         protocol: require './protocol'
 
 
-    context.listen.server.get '/', (req, res) -> res.send ''
+    #
+    # TEMPORARY (pending https://github.com/nomilous/cetera)
+    # 
+    # hack the viewport clientside up
+    #
+
+    context.listen.server.use require('connect-jade')
+
+        root: __dirname + '/../views'
+
+
+    context.listen.server.get '/', (req, res) -> 
+
+        res.render 'index'
+
 
     return context

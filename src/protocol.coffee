@@ -57,4 +57,3 @@ module.exports = (subscribe, publish, edge, context) ->
 
         publish 'event:register:viewport:ok', imageTag
 
-

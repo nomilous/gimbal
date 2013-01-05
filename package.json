@@ -15,7 +15,8 @@
   "dependencies": {
     "plex": "0.0.4",
     "et": "0.0.3",
-    "qrcode-npm": "0.0.3"
+    "qrcode-npm": "0.0.3",
+    "connect-jade": "0.0.3"
   },
   "devDependencies": {
     "hound": "~1.0.4",
