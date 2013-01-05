@@ -20,6 +20,10 @@ module.exports = (subscribe, publish, edge, context) ->
             # connect the controller to
             #
 
+            #
+            # TODO: it needs to be the wifi interface
+            #
+
             ifaces = os.networkInterfaces()
 
             for iface of ifaces
