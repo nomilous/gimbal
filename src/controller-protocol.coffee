@@ -52,6 +52,32 @@ module.exports = (subscribe, publish, edge, context) ->
 
         publish 'event:register:controller:ok', primaryViewportID
 
+    
+    subscribe 'event:release:controller', (payload) -> 
+
+        #
+        # Controller release resets all associated viewports
+        #
+
+        console.log 'RECEIVED: event:release:controller'
+
+        return unless viewports
+
+        for viewportID in viewports
+
+            send = context.gimbal.viewports[viewportID].getPublisher()
+            send 'event:reset', ''
+
+        viewports = undefined
+
+        context.gimbal.controllers[ id ].disconnected = true
+
+        #
+        # send ack
+        #
+
+        publish 'event:release:controller:ok'
+
 
     subscribe 'event:controller', (payload) -> 
 

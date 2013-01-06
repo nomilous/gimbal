@@ -30,6 +30,15 @@ html
 
 
       //
+      // handle reset 
+      // controller disconnected, resend register
+      // 
+      socket.on( 'event:reset', function(data) {
+        socket.emit('event:register:viewport')
+      });
+
+
+      //
       // controller event 
       // more hackery just to see it working...
       // 

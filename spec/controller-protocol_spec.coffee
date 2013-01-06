@@ -76,3 +76,14 @@ describe 'controller-protocol', ->
             viewportReceived['event:code'].should.equal 'DATA'
             done()
 
+    it 'resets viewports on disconnect', (done) -> 
+
+        controller.send 'event:release:controller', {}, 500, -> 
+
+            console.log '\n\n\n\nTODO!! CULL disconnected controllers\n\n\n'
+
+            viewportReceived['event:reset'].should.equal ''
+            context.gimbal.controllers[clientid].disconnected.should.equal true
+
+            done()
+
