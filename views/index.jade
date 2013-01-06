@@ -28,6 +28,13 @@ html
         document.getElementById('container').innerHTML = imageTag
       });
 
+      //
+      // a controller has grabbed this viewport
+      // 
+      socket.on( 'event:assigned', function(data) {
+        document.getElementById('container').innerHTML = JSON.stringify(data)
+      });
+
 
       //
       // handle reset 

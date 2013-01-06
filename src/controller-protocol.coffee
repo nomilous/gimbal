@@ -47,7 +47,17 @@ module.exports = (subscribe, publish, edge, context) ->
 
 
         #
-        # send ack
+        # notify the viewport of it's new controller
+        #
+
+        send = context.gimbal.viewports[ primaryViewportID ].getPublisher()
+        send 'event:assigned', 
+            controller: id
+            primary: true
+
+
+        #
+        # send ack to controller
         #
 
         publish 'event:register:controller:ok', primaryViewportID

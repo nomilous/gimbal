@@ -45,15 +45,23 @@ describe 'controller-protocol', ->
         context.gimbal.controllers[clientid].edge.should.be.an.instanceof Object
         done()
 
+
     it 'has reference to the first registered viewport as the primary', (done) -> 
 
         context.gimbal.controllers[clientid].primary.should.equal 'PRIMARY_VIEWPORT_ID'
         done()
 
+
     it 'has reference to pending associated viewports', (done) -> 
 
         context.gimbal.controllers[clientid].viewports.should.be.an.instanceof Array
         done()
+
+
+    it 'informs primary viewport on associate', (done) -> 
+
+        viewportReceived['event:assigned'].primary.should.equal true
+        done() 
 
     
     it 'broadcasts inbound controller events to all associated (bound) viewport(s)', (done) ->
@@ -75,6 +83,7 @@ describe 'controller-protocol', ->
 
             viewportReceived['event:code'].should.equal 'DATA'
             done()
+
 
     it 'resets viewports on disconnect', (done) -> 
 
