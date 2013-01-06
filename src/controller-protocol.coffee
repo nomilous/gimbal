@@ -70,7 +70,8 @@ module.exports = (subscribe, publish, edge, context) ->
 
             viewports = undefined
 
-            context.gimbal.controllers[ id ].disconnected = true
+
+        context.gimbal.controllers[ id ].disconnected = true    
 
         #
         # send ack
