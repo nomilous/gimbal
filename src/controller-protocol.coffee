@@ -61,16 +61,16 @@ module.exports = (subscribe, publish, edge, context) ->
 
         console.log 'RECEIVED: event:release:controller'
 
-        return unless viewports
+        if viewports
 
-        for viewportID in viewports
+            for viewportID in viewports
 
-            send = context.gimbal.viewports[viewportID].getPublisher()
-            send 'event:reset', ''
+                send = context.gimbal.viewports[viewportID].getPublisher()
+                send 'event:reset', ''
 
-        viewports = undefined
+            viewports = undefined
 
-        context.gimbal.controllers[ id ].disconnected = true
+            context.gimbal.controllers[ id ].disconnected = true
 
         #
         # send ack
