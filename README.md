@@ -11,5 +11,5 @@ a node based 'game'
 ```
 
 [in browser viewport](http://localhost:3000) <br />
-pending [android controller](https://github.com/nomilous/gimbal-android)
+inprogress [android controller app](https://github.com/nomilous/gimbal-android/raw/master/Gimbal-debug.apk)
 
