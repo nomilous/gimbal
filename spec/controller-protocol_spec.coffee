@@ -64,8 +64,7 @@ describe 'controller-protocol', ->
 
         controller.send 'event:controller', {
 
-            event: 'event:code'
-            payload: 'DATA'
+            'event:code': 'DATA'
 
         }, 500, ->
 

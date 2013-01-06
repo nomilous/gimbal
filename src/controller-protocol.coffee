@@ -50,7 +50,7 @@ module.exports = (subscribe, publish, edge, context) ->
         # send ack
         #
 
-        publish 'event:register:controller:ok'
+        publish 'event:register:controller:ok', primaryViewportID
 
 
     subscribe 'event:controller', (payload) -> 
@@ -66,5 +66,12 @@ module.exports = (subscribe, publish, edge, context) ->
         for viewportID in viewports
 
             send = context.gimbal.viewports[viewportID].getPublisher()
-            send payload.event, payload.payload
+
+            #
+            # inbound controller payload may have multiple events
+            #
+
+            for event of payload
+
+                send event, payload[event]
 
