@@ -60,7 +60,7 @@ module.exports = (subscribe, publish, edge, context) ->
         # send ack to controller
         #
 
-        publish 'event:register:controller:ok', primaryViewportID
+        publish 'event:register:controller:ok', 'PENDING_CONTROLLER_CONFIG'
 
     
     subscribe 'event:release:controller', (payload) -> 
