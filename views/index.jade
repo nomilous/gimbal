@@ -11,7 +11,7 @@ html
 
     script(type='text/javascript')
 
-      var socket = io.connect('http://localhost')
+      var socket = io.connect()
 
       //
       // register viewport
@@ -54,4 +54,9 @@ html
 
       socket.on( 'event:orient', function(xyz) {
         document.getElementById('container').innerHTML = xyz
+      });
+
+
+      socket.on( 'event:touch', function(data) {
+        document.getElementById('container').innerHTML = JSON.stringify(data)
       });

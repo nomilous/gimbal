@@ -34,6 +34,8 @@ module.exports = (subscribe, publish, edge, context) ->
                         continue unless details.family == 'IPv4'
                         continue if details.address.match /^192\.168\./
 
+                        console.log 'USING ADDRESS:', details.address 
+
                         url = url.replace '0.0.0.0', details.address
 
                         #
