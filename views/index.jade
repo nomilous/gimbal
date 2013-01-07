@@ -13,6 +13,8 @@ html
 
     #pointers|pointers
 
+    #keypad|keypad
+
     script(type='text/javascript')
 
       var socket = io.connect()
@@ -48,6 +50,7 @@ html
         socket.emit('event:register:viewport')
         document.getElementById('orientation').innerHTML = "orientation"
         document.getElementById('pointers').innerHTML = "pointers"
+        document.getElementById('keypad').innerHTML = "keypad"
       });
 
 
@@ -66,3 +69,10 @@ html
       socket.on( 'event:touch', function(data) {
         document.getElementById('pointers').innerHTML = JSON.stringify(data)
       });
+
+
+      socket.on( 'event:key', function(data) {
+        document.getElementById('keypad').innerHTML = JSON.stringify(data)
+      });
+
+
