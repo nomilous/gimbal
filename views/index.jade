@@ -7,7 +7,11 @@ html
 
   body
 
-    #container
+    #controller
+
+    #orientation|orientation
+
+    #pointers|pointers
 
     script(type='text/javascript')
 
@@ -25,14 +29,14 @@ html
       // display QRcode
       //
       socket.on( 'event:register:viewport:ok', function(imageTag) {
-        document.getElementById('container').innerHTML = imageTag
+        document.getElementById('controller').innerHTML = imageTag
       });
 
       //
       // a controller has grabbed this viewport
       // 
       socket.on( 'event:assigned', function(data) {
-        document.getElementById('container').innerHTML = JSON.stringify(data)
+        document.getElementById('controller').innerHTML = JSON.stringify(data)
       });
 
 
@@ -42,6 +46,8 @@ html
       // 
       socket.on( 'event:reset', function(data) {
         socket.emit('event:register:viewport')
+        document.getElementById('orientation').innerHTML = "orientation"
+        document.getElementById('pointers').innerHTML = "pointers"
       });
 
 
@@ -53,10 +59,10 @@ html
       //
 
       socket.on( 'event:orient', function(xyz) {
-        document.getElementById('container').innerHTML = xyz
+        document.getElementById('orientation').innerHTML = xyz
       });
 
 
       socket.on( 'event:touch', function(data) {
-        document.getElementById('container').innerHTML = JSON.stringify(data)
+        document.getElementById('pointers').innerHTML = JSON.stringify(data)
       });
