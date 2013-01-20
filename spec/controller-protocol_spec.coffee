@@ -93,7 +93,7 @@ describe 'controller-protocol', ->
             done()
 
 
-    it 'resets viewports on disconnect', (done) -> 
+    it 'resets viewports on disconnect and sends array of released viewports to controller', (done) -> 
 
         controller.send 'event:release:controller', {}, 500, -> 
 
@@ -101,6 +101,9 @@ describe 'controller-protocol', ->
 
             viewportReceived['event:reset'].should.equal ''
             context.gimbal.controllers[clientid].disconnected.should.equal true
+
+            ack = controller.received['event:release:controller:ok']
+            ack.viewports[0].id.should.equal 'PRIMARY_VIEWPORT_ID'
 
             done()
 

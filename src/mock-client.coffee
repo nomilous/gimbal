@@ -71,6 +71,10 @@ module.exports = class MockClient
 
             @received['event:register:controller:ok'] = payload
 
+        @connection.on 'event:release:controller:ok', (payload) => 
+
+            @received['event:release:controller:ok'] = payload
+
 
 
 

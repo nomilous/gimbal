@@ -1,7 +1,8 @@
 module.exports = (subscribe, publish, edge, context) -> 
 
     id = edge.localId()
-    viewports = undefined
+    viewports         = undefined
+    primaryViewportID = undefined
 
     subscribe 'event:register:controller', (payload) -> 
 
@@ -80,12 +81,23 @@ module.exports = (subscribe, publish, edge, context) ->
 
         console.log 'RECEIVED: event:release:controller'
 
+        viewportArray = [] # viewports that were released (for ack to controller)
+
         if viewports
 
             for viewportID in viewports
 
+                #
+                # inform the viewport it was released
+                #
+
                 send = context.gimbal.viewports[viewportID].getPublisher()
                 send 'event:reset', ''
+
+                viewportArray.push
+                    id: viewportID
+                    primary: (viewportID == primaryViewportID)
+
 
             viewports = undefined
 
@@ -96,7 +108,9 @@ module.exports = (subscribe, publish, edge, context) ->
         # send ack
         #
 
-        publish 'event:release:controller:ok'
+        publish 'event:release:controller:ok',
+            viewports: viewportArray
+
 
 
     subscribe 'event:controller', (payload) -> 
