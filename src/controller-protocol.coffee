@@ -3,7 +3,7 @@ module.exports = (subscribe, publish, edge, context) ->
     id = edge.localId()
     viewports = undefined
 
-    subscribe 'event:register:controller', (primaryViewportID) -> 
+    subscribe 'event:register:controller', (payload) -> 
 
         #
         # create viewport association structure
@@ -13,6 +13,9 @@ module.exports = (subscribe, publish, edge, context) ->
 
         context.gimbal ||= {}
         context.gimbal.controllers ||= {}
+
+        primaryViewportID = payload.primary_viewport
+        inputCube         = payload.input_cube
 
         context.gimbal.controllers[ id ] = 
 
@@ -54,6 +57,7 @@ module.exports = (subscribe, publish, edge, context) ->
         send 'event:assigned', 
             controller: id
             primary: true
+            input_cube: inputCube
 
 
         #
