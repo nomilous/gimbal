@@ -51,6 +51,14 @@ describe 'controller-protocol', ->
         context.gimbal.controllers[clientid].primary.should.equal 'PRIMARY_VIEWPORT_ID'
         done()
 
+    it 'responds with event:register:controller:ok specifying the viewport details and controller config', (done) -> 
+
+        ack = controller.received['event:register:controller:ok']
+        ack.viewport.id.should.equal clientid
+        ack.viewport.primary.should.equal true
+        ack.config.pending.should.equal "pending"
+        done()
+
 
     it 'has reference to pending associated viewports', (done) -> 
 
