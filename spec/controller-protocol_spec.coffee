@@ -54,7 +54,7 @@ describe 'controller-protocol', ->
     it 'responds with event:register:controller:ok specifying the viewport details and controller config', (done) -> 
 
         ack = controller.received['event:register:controller:ok']
-        ack.viewport.id.should.equal clientid
+        ack.viewport.id.should.equal 'PRIMARY_VIEWPORT_ID'
         ack.viewport.primary.should.equal true
         ack.config.pending.should.equal "pending"
         done()

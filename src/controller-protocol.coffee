@@ -66,7 +66,7 @@ module.exports = (subscribe, publish, edge, context) ->
 
         publish 'event:register:controller:ok', 
             viewport: 
-                id: id
+                id: primaryViewportID
                 primary: true
             config:
                 pending: "pending"
