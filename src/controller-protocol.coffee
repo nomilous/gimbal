@@ -15,7 +15,7 @@ module.exports = (subscribe, publish, edge, context) ->
         context.gimbal ||= {}
         context.gimbal.controllers ||= {}
 
-        primaryViewportID = payload.primary_viewport
+        primaryViewportID = payload.viewport.id
         inputCube         = payload.input_cube
 
         context.gimbal.controllers[ id ] = 

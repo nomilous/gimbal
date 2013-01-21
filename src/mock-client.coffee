@@ -44,7 +44,9 @@ module.exports = class MockClient
 
                     @connection.emit "event:register:controller",
 
-                        primary_viewport: 'PRIMARY_VIEWPORT_ID',
+                        viewport: 
+                            id: 'PRIMARY_VIEWPORT_ID'
+                            primary: true
                         input_cube: [640,400,0]
 
                     
