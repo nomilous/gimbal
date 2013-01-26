@@ -12,6 +12,8 @@ module.exports = (subscribe, publish, edge, context) ->
         # TODO: cull old controller refs
         #
 
+        console.log "RECEIVED:", payload
+
         context.gimbal ||= {}
         context.gimbal.controllers ||= {}
 

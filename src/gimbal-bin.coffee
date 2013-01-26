@@ -41,7 +41,7 @@ module.exports = (port = 3000) ->
                 # client connected, initiate protocol
                 #
 
-                edge.getPublisher() 'event:client:start', ''
+                edge.getPublisher() 'event:client:start', {}
 
 
         protocol: require './protocols'
