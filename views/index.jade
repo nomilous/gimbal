@@ -2,6 +2,20 @@ doctype 5
 html
 
   head
+    style(type='text/css')
+
+      .pointer {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        visibility: hidden;
+        border: 1px solid black;
+        padding-left: 3px;
+        padding-right: 3px;
+        background: black;
+        color: white;
+
+      }
     block scripts
       script(src='/socket.io/socket.io.js')
 
@@ -9,15 +23,20 @@ html
 
     #controller
 
-    #orientation|orientation
-
-    #pointers|pointers
-
-    #keypad|keypad
-
+    #pointer0(class = 'pointer')|0 
+    #pointer1(class = 'pointer')|1 
+    #pointer2(class = 'pointer')|2 
+    #pointer3(class = 'pointer')|3 
+    #pointer4(class = 'pointer')|4
+    #pointer5(class = 'pointer')|5
+    #pointer6(class = 'pointer')|6
+    #pointer7(class = 'pointer')|7
     
 
     script(type='text/javascript')
+
+      var ratioX = 1;
+      var ratioY = 1;
 
       var socket = io.connect()
 
@@ -25,6 +44,7 @@ html
       // register viewport
       //
       socket.on( 'event:client:start', function(data) {
+        //console.log(data)
         socket.emit('event:register:viewport')
       });
 
@@ -33,6 +53,7 @@ html
       // display QRcode
       //
       socket.on( 'event:register:viewport:ok', function(imageTag) {
+        //console.log(imageTag)
         document.getElementById('controller').innerHTML = imageTag
       });
 
@@ -40,7 +61,20 @@ html
       // a controller has grabbed this viewport
       // 
       socket.on( 'event:assigned', function(data) {
-        document.getElementById('controller').innerHTML = JSON.stringify(data)
+        //console.log(data)
+        controllerWidth = data.input_cube[0]
+        controllerHeight = data.input_cube[1]
+        ratioX = window.innerWidth / controllerWidth
+        ratioY = window.innerHeight / controllerHeight
+
+        console.log("controller:" + controllerWidth + " " + controllerHeight)
+        console.log("window:" + window.innerWidth + " " + window.innerHeight)
+        console.log("ratio:" + ratioX + " " + ratioY)
+
+        
+
+
+        document.getElementById('controller').innerHTML = ''
       });
 
 
@@ -50,9 +84,9 @@ html
       // 
       socket.on( 'event:reset', function(data) {
         socket.emit('event:register:viewport')
-        document.getElementById('orientation').innerHTML = "orientation"
-        document.getElementById('pointers').innerHTML = "pointers"
-        document.getElementById('keypad').innerHTML = "keypad"
+        //document.getElementById('orientation').innerHTML = "orientation"
+        //document.getElementById('pointers').innerHTML = "pointers"
+        //document.getElementById('keypad').innerHTML = "keypad"
       });
 
 
@@ -64,17 +98,37 @@ html
       //
 
       socket.on( 'event:orient', function(xyz) {
-        document.getElementById('orientation').innerHTML = xyz
+        //document.getElementById('orientation').innerHTML = xyz
       });
 
 
       socket.on( 'event:touch', function(data) {
-        document.getElementById('pointers').innerHTML = JSON.stringify(data)
+        //console.log(data)
+        
+        for( var i = 0; i < 8; i++) {
+
+          pointer = document.getElementById('pointer' + i)
+
+          if( data.pointers[i] ) {
+
+            pointer.style.visibility = 'visible'
+            pointer.style.left = data.pointers[i].vx * ratioX + 'px'
+            pointer.style.top = data.pointers[i].vy * ratioY + 'px'
+
+          } else {
+
+            pointer.style.visibility = 'hidden'
+
+          }
+
+        }
+
+        //document.getElementById('pointers').innerHTML = JSON.stringify(data)
       });
 
 
       socket.on( 'event:keypad', function(data) {
-        document.getElementById('keypad').innerHTML = JSON.stringify(data)
+        //document.getElementById('keypad').innerHTML = JSON.stringify(data)
       });
 
 

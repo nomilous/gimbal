@@ -121,7 +121,7 @@ module.exports = (subscribe, publish, edge, context) ->
         # Controller events are broadcast to all associated viewports
         #
 
-        console.log 'RECEIVED: event:viewport:broadcast %s', JSON.stringify payload
+        #console.log 'RECEIVED: event:viewport:broadcast %s', JSON.stringify payload
 
         return unless viewports
 
