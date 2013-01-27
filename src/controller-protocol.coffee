@@ -115,13 +115,13 @@ module.exports = (subscribe, publish, edge, context) ->
 
 
 
-    subscribe 'event:controller', (payload) -> 
+    subscribe 'event:viewport:broadcast', (payload) -> 
 
         #
         # Controller events are broadcast to all associated viewports
         #
 
-        console.log 'RECEIVED: event:controller %s', JSON.stringify payload
+        console.log 'RECEIVED: event:viewport:broadcast %s', JSON.stringify payload
 
         return unless viewports
 
@@ -129,11 +129,5 @@ module.exports = (subscribe, publish, edge, context) ->
 
             send = context.gimbal.viewports[viewportID].getPublisher()
 
-            #
-            # inbound controller payload may have multiple events
-            #
-
-            for event of payload
-
-                send event, payload[event]
+            send payload.code, payload.event
 

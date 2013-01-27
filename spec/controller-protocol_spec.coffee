@@ -78,9 +78,10 @@ describe 'controller-protocol', ->
         # generate a fake controller event across the socket
         #
 
-        controller.send 'event:controller', {
+        controller.send 'event:viewport:broadcast', {
 
-            'event:code': 'DATA'
+            code: 'event:code'
+            event: 'DATA'
 
         }, 500, ->
 
