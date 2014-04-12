@@ -1,2 +1,0 @@
-mongo: mongod run -v --config /usr/local/etc/mongod.conf
-redis: redis-server
