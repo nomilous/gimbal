@@ -3,6 +3,7 @@
   "description": "pending",
   "version": "0.0.0",
   "author": "nomilous <nomilous@gmail.com>",
+  "repository": "https://github.com/nomilous/gimbal",
   "contributors": [
     {
       "name": "nomilous",
@@ -10,5 +11,7 @@
     }
   ],
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "ipso": "0.0.21"
+  }
 }
