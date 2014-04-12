@@ -8,7 +8,8 @@ gimbal
 
 ```
 
-npm install -g ipso-cli
+npm install -g ipso-cli git-seed
+git seed clone # ( or pull )
 ipso --mocha
 
 

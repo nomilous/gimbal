@@ -10,7 +10,12 @@
       "email": "nomilous@gmail.com"
     }
   ],
-  "dependencies": {},
+  "bin": {
+    "gimbal": "./bin/gimbal"
+  },
+  "dependencies": {
+    "vertex": "0.0.5"
+  },
   "devDependencies": {
     "ipso": "0.0.21"
   }
