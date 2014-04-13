@@ -3,8 +3,8 @@ module.exports = root = (opts, callback) ->
     callback null, 
 
         statusCode: 301 # redirect
-        headers: location: '/home'
+        headers: location: '/viewport'
 
 root.$www = {}
 
-root.home = require './home'
+root.viewport = require './viewport'
