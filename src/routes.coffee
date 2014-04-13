@@ -8,3 +8,4 @@ module.exports = root = (opts, callback) ->
 root.$www = {}
 
 root.viewport = require './viewport'
+root.controller = require './controller'
