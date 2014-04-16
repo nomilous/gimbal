@@ -46,11 +46,20 @@ module.exports.client = ->
     rings           = 16
     sphereGeometry  = new THREE.SphereGeometry radius, segments, rings
     sphereMaterial  = new THREE.MeshLambertMaterial color: 0xFFFFFF
-    sphere1         = new THREE.Mesh sphereGeometry, sphereMaterial
-    sphere2         = new THREE.Mesh sphereGeometry, sphereMaterial
-    scene.add sphere1
-    scene.add sphere2
 
+    spheres = [
+        new THREE.Mesh sphereGeometry, sphereMaterial
+        new THREE.Mesh sphereGeometry, sphereMaterial
+    ]
+
+    spheres[0].velocity = [ 0.0,  0.2, 0.0 ]
+    spheres[1].velocity = [ 0.0, -0.2, 0.0 ]
+
+    spheres[0].position.x = 100
+    spheres[1].position.x = -100
+
+    scene.add spheres[0]
+    scene.add spheres[1]
 
     pointLight = new THREE.PointLight 0xFFFFFF
     pointLight.position.x = 10
@@ -58,14 +67,21 @@ module.exports.client = ->
     pointLight.position.z = 130
     scene.add pointLight
 
-    x = 0
+    t = 1
 
     animate = ->
 
         try
             requestAnimationFrame animate
-            sphere1.position.x = 100
-            sphere2.position.x = -100
+
+            for i in [0..1]
+
+                spheres[i].position.x += spheres[i].velocity[0] * t
+                spheres[i].position.y += spheres[i].velocity[1] * t
+                spheres[i].position.z += spheres[i].velocity[2] * t
+
             renderer.render scene, camera
 
     animate()
+
+
