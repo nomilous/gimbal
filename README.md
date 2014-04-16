@@ -20,8 +20,10 @@ node-dev lib/gimbal
 
 ```
 
-npm install -g ipso-cli git-seed
+npm install -g component ipso-cli git-seed
 git seed clone # ( or pull )
+component install
+component build
 ipso --mocha
 
 ```

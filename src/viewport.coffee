@@ -5,12 +5,10 @@ module.exports = viewport = (opts, callback) ->
         headers: 'Content-Type': 'text/html'
         body: """
         <body>
-            <style>
-            body {
-                background-color: green;
-            }
-            </style>
-            <script src="./controller"></script>
+
+            <script src="./build"> </script>
+            <script src="./controller"> </script>
+
         </body>
         """
 

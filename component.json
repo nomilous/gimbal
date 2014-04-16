@@ -1,0 +1,12 @@
+{
+  "name": "gimbal",
+  "dependencies": {
+    "component/dom": "1.0.5",
+    "cvdlab/three": "0.60.0"
+  },
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": [
+    "index.js"
+  ]
+}
