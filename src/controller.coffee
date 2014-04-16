@@ -52,12 +52,6 @@ module.exports.client = ->
         new THREE.Mesh sphereGeometry, sphereMaterial
     ]
 
-    spheres[0].velocity = [ 0.0,  0.2, 0.0 ]
-    spheres[1].velocity = [ 0.0, -0.2, 0.0 ]
-
-    spheres[0].position.x = 100
-    spheres[1].position.x = -100
-
     scene.add spheres[0]
     scene.add spheres[1]
 
@@ -67,12 +61,33 @@ module.exports.client = ->
     pointLight.position.z = 130
     scene.add pointLight
 
+
     t = 1
+    spheres[0].velocity = [ 0.0,  0.2, 0.0 ]
+    spheres[1].velocity = [ 0.0, -0.2, 0.0 ]
+    spheres[0].mass = 1.0
+    spheres[1].mass = 1.0
+    spheres[0].position.x = 100
+    spheres[1].position.x = -100
+
 
     animate = ->
 
         try
             requestAnimationFrame animate
+
+            position1       = spheres[0].position
+            position2       = spheres[1].position
+            distanceScalar  = Math.sqrt Math.abs position1.dot position2
+            massSum         = spheres[0].mass + spheres[1].mass
+            G               = 1
+
+            forceScalar     = G * massSum / distanceScalar
+            forceVector     = new THREE.Vector3
+            forceVector.subVectors position1, position2
+            forceVector.normalize().multiplyScalar forceScalar
+
+            forceVector
 
             for i in [0..1]
 
@@ -83,5 +98,3 @@ module.exports.client = ->
             renderer.render scene, camera
 
     animate()
-
-
