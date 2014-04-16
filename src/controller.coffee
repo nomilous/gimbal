@@ -63,8 +63,10 @@ module.exports.client = ->
 
 
     t = 1
-    spheres[0].velocity = [ 0.0,  0.2, 0.0 ]
-    spheres[1].velocity = [ 0.0, -0.2, 0.0 ]
+    spheres[0].velocity = [ 0.0,  0.5, 0.0 ]
+    spheres[1].velocity = [ 0.0, -0.5, 0.0 ]
+    spheres[0].acceleration = new THREE.Vector3
+    spheres[1].acceleration = new THREE.Vector3
     spheres[0].mass = 1.0
     spheres[1].mass = 1.0
     spheres[0].position.x = 100
@@ -87,9 +89,17 @@ module.exports.client = ->
             forceVector.subVectors position1, position2
             forceVector.normalize().multiplyScalar forceScalar
 
-            forceVector
+            spheres[0].acceleration.set -forceVector.x, -forceVector.y, -forceVector.z
+            spheres[1].acceleration.set  forceVector.x, forceVector.y,  forceVector.z
 
+            
             for i in [0..1]
+
+                spheres[i].acceleration.divideScalar spheres[i].mass
+
+                spheres[i].velocity[0] += spheres[i].acceleration.x * t
+                spheres[i].velocity[1] += spheres[i].acceleration.y * t
+                spheres[i].velocity[2] += spheres[i].acceleration.z * t
 
                 spheres[i].position.x += spheres[i].velocity[0] * t
                 spheres[i].position.y += spheres[i].velocity[1] * t
