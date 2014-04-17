@@ -24,7 +24,7 @@ module.exports.client = ->
 
     width    = 400
     height   = 300
-    fov      = 45
+    fov      = 90
     aspect   = width / height
     near     = 0.1
     far      = 1000
@@ -37,19 +37,19 @@ module.exports.client = ->
     renderer.setSize width, height
     renderer.setClearColor 0x222222, 1
     
-
     container.append renderer.domElement
 
-
-    radius          = 5 #0
+    radius1         = 5 #25
+    radius2         = 5
     segments        = 16
     rings           = 16
-    sphereGeometry  = new THREE.SphereGeometry radius, segments, rings
+    sphere1Geometry  = new THREE.SphereGeometry radius1, segments, rings
+    sphere2Geometry  = new THREE.SphereGeometry radius2, segments, rings
     sphereMaterial  = new THREE.MeshLambertMaterial color: 0xFFFFFF
 
     spheres = [
-        new THREE.Mesh sphereGeometry, sphereMaterial
-        new THREE.Mesh sphereGeometry, sphereMaterial
+        new THREE.Mesh sphere1Geometry, sphereMaterial
+        new THREE.Mesh sphere2Geometry, sphereMaterial
     ]
 
     scene.add spheres[0]
@@ -62,13 +62,13 @@ module.exports.client = ->
     scene.add pointLight
 
 
-    t = 1
-    spheres[0].velocity = [ 0.0,  0.5, 0.0 ]
-    spheres[1].velocity = [ 0.0, -0.5, 0.0 ]
+    t = 5
+    spheres[0].velocity = [ 0.0,  0.1, 0.0 ]
+    spheres[1].velocity = [ 0.0, -0.1, 0.0 ]
     spheres[0].acceleration = new THREE.Vector3
     spheres[1].acceleration = new THREE.Vector3
-    spheres[0].mass = 1.0
-    spheres[1].mass = 1.0
+    spheres[0].mass = 100.0
+    spheres[1].mass = 100.0
     spheres[0].position.x = 100
     spheres[1].position.x = -100
 
@@ -82,15 +82,15 @@ module.exports.client = ->
             position2       = spheres[1].position
             distanceScalar  = Math.sqrt Math.abs position1.dot position2
             massSum         = spheres[0].mass + spheres[1].mass
-            G               = 1
+            G               = 0.01
 
-            forceScalar     = G * massSum / distanceScalar
+            forceScalar     = ( G * massSum ) / distanceScalar * distanceScalar
             forceVector     = new THREE.Vector3
             forceVector.subVectors position1, position2
             forceVector.normalize().multiplyScalar forceScalar
 
             spheres[0].acceleration.set -forceVector.x, -forceVector.y, -forceVector.z
-            spheres[1].acceleration.set  forceVector.x, forceVector.y,  forceVector.z
+            spheres[1].acceleration.set  forceVector.x,  forceVector.y,  forceVector.z
 
             
             for i in [0..1]
