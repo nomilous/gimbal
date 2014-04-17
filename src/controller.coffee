@@ -22,12 +22,13 @@ module.exports.client = ->
     # http://www.aerotwist.com/tutorials/getting-started-with-three-js/
     # 
 
-    width    = 400
-    height   = 300
+    width    = 800
+    height   = 600
     fov      = 90
     aspect   = width / height
     near     = 0.1
     far      = 1000
+    history  = 2000
     renderer = new THREE.WebGLRenderer
     camera   = new THREE.PerspectiveCamera fov, aspect, near, far
     scene    = new THREE.Scene
@@ -36,7 +37,7 @@ module.exports.client = ->
     camera.position.z = 300
     renderer.setSize width, height
     renderer.setClearColor 0x222222, 1
-    
+
     container.append renderer.domElement
 
     radius1         = 10
@@ -71,6 +72,10 @@ module.exports.client = ->
     spheres[1].mass = 100.0
     spheres[0].position.x = 0.1
     spheres[1].position.x = -200
+    spheres[0].history    = []
+    spheres[1].history    = []
+    spheres[0].historyLine  = null
+    spheres[1].historyLine  = null
 
 
     animate = ->
@@ -104,6 +109,29 @@ module.exports.client = ->
                 spheres[i].position.x += spheres[i].velocity[0] * t
                 spheres[i].position.y += spheres[i].velocity[1] * t
                 spheres[i].position.z += spheres[i].velocity[2] * t
+
+                vertices = spheres[i].history
+                vertices.push spheres[i].position.clone()
+                vertices.shift() while vertices.length > history
+
+                # history1Geometry.verticesNeedUpdate = true
+                # history1Geometry.__dirtyVertices = true
+
+                scene.remove spheres[i].historyLine
+
+                historyMaterial    = new THREE.LineBasicMaterial color: 0x0000ff
+                historyGeometry    = new THREE.Geometry
+
+                try for j in [0..vertices.length - 1]
+                    # historyGeometry.vertices.push new THREE.Vector3 0,j*10,0
+                    historyGeometry.vertices.push spheres[i].history[j]
+
+                spheres[i].historyLine = new THREE.Line historyGeometry, historyMaterial
+                
+
+
+                scene.add spheres[i].historyLine
+                
 
             renderer.render scene, camera
 
