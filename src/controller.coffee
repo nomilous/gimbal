@@ -39,7 +39,7 @@ module.exports.client = ->
     
     container.append renderer.domElement
 
-    radius1         = 5 #25
+    radius1         = 10
     radius2         = 5
     segments        = 16
     rings           = 16
@@ -63,14 +63,14 @@ module.exports.client = ->
 
 
     t = 5
-    spheres[0].velocity = [ 0.0,  0.1, 0.0 ]
-    spheres[1].velocity = [ 0.0, -0.1, 0.0 ]
+    spheres[0].velocity = [ 0.0,  0.2, 0.0 ]
+    spheres[1].velocity = [ 0.0, -2.0, 0.0 ]
     spheres[0].acceleration = new THREE.Vector3
     spheres[1].acceleration = new THREE.Vector3
-    spheres[0].mass = 100.0
+    spheres[0].mass = 1000.0
     spheres[1].mass = 100.0
-    spheres[0].position.x = 100
-    spheres[1].position.x = -100
+    spheres[0].position.x = 0.1
+    spheres[1].position.x = -200
 
 
     animate = ->
