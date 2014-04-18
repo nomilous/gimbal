@@ -28,7 +28,7 @@ module.exports.client = ->
     aspect   = width / height
     near     = 0.1
     far      = 1000
-    history  = 1750
+    history  = 20 #1750
     renderer = new THREE.WebGLRenderer
     camera   = new THREE.PerspectiveCamera fov, aspect, near, far
     scene    = new THREE.Scene
@@ -49,17 +49,25 @@ module.exports.client = ->
     radius2         = 5
     segments        = 16
     rings           = 16
+    
+
     sphere1Geometry  = new THREE.SphereGeometry radius1, segments, rings
     sphere2Geometry  = new THREE.SphereGeometry radius2, segments, rings
-    sphereMaterial  = new THREE.MeshLambertMaterial color: 0xFFFFFF
-
+    sphereMaterial   = new THREE.MeshLambertMaterial color: 0xFFFFFF
     spheres = [
         new THREE.Mesh sphere1Geometry, sphereMaterial
         new THREE.Mesh sphere2Geometry, sphereMaterial
     ]
-
     scene.add spheres[0]
     scene.add spheres[1]
+
+
+
+    cubeGeometry = new THREE.CubeGeometry 1000, 1000, 1000
+    cubeMaterial = new THREE.MeshBasicMaterial color: 0xFFFFFF, wireframe: true
+    cube = new THREE.Mesh cubeGeometry, cubeMaterial
+    scene.add cube
+
 
     pointLight = new THREE.PointLight 0xFFFFFF
     pointLight.position.x = 10
