@@ -28,19 +28,24 @@ module.exports.client = ->
     aspect   = width / height
     near     = 0.1
     far      = 1000
-    history  = 2000
+    history  = 1750
     renderer = new THREE.WebGLRenderer
     camera   = new THREE.PerspectiveCamera fov, aspect, near, far
     scene    = new THREE.Scene
 
     scene.add camera
-    camera.position.z = 300
+    camera.position.z   = 300
+    cameraRevolveAxis   = new THREE.Vector3 0.0, 1.0, 0.0
+    cameraRevolveAngle  = 0.01
+    cameraRevolveMatrix = new THREE.Matrix4().makeRotationAxis cameraRevolveAxis, cameraRevolveAngle
+    
+
     renderer.setSize width, height
     renderer.setClearColor 0x222222, 1
 
     container.append renderer.domElement
 
-    radius1         = 10
+    radius1         = 5
     radius2         = 5
     segments        = 16
     rings           = 16
@@ -64,13 +69,13 @@ module.exports.client = ->
 
 
     t = 5
-    spheres[0].velocity = [ 0.0,  0.2, 0.0 ]
-    spheres[1].velocity = [ 0.0, -2.0, 0.0 ]
+    spheres[0].velocity = [ 0.0,  1.0, 0.0 ]
+    spheres[1].velocity = [ 0.0, -1.0, 0.0 ]
     spheres[0].acceleration = new THREE.Vector3
     spheres[1].acceleration = new THREE.Vector3
-    spheres[0].mass = 1000.0
+    spheres[0].mass = 100.0
     spheres[1].mass = 100.0
-    spheres[0].position.x = 0.1
+    spheres[0].position.x = 200
     spheres[1].position.x = -200
     spheres[0].history    = []
     spheres[1].history    = []
@@ -119,7 +124,7 @@ module.exports.client = ->
 
                 scene.remove spheres[i].historyLine
 
-                historyMaterial    = new THREE.LineBasicMaterial color: 0x0000ff
+                historyMaterial    = new THREE.LineBasicMaterial color: 0x888888
                 historyGeometry    = new THREE.Geometry
 
                 try for j in [0..vertices.length - 1]
@@ -128,7 +133,8 @@ module.exports.client = ->
 
                 spheres[i].historyLine = new THREE.Line historyGeometry, historyMaterial
                 
-
+                camera.position.applyMatrix4 cameraRevolveMatrix
+                camera.lookAt scene.position
 
                 scene.add spheres[i].historyLine
                 
