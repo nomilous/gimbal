@@ -14,7 +14,9 @@
     "gimbal": "./bin/gimbal"
   },
   "dependencies": {
-    "vertex": "0.0.5"
+    "vertex": "0.0.5",
+    "three": "~0.66.2",
+    "jquery": "~2.1.0"
   },
   "devDependencies": {
     "ipso": "0.0.21"

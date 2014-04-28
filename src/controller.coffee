@@ -12,11 +12,10 @@ controller.$www = {}
 
 module.exports.client = -> 
 
+    return
+
     dom   = require 'component~dom@1.0.5'
     THREE = require 'cvdlab~three@0.60.0'
-
-
-    container = dom('body').append '<div></div>'
 
     #
     # http://www.aerotwist.com/tutorials/getting-started-with-three-js/
@@ -28,7 +27,7 @@ module.exports.client = ->
     aspect   = width / height
     near     = 0.1
     far      = 1000
-    history  = 20 #1750
+    history  = 1750
     renderer = new THREE.WebGLRenderer
     camera   = new THREE.PerspectiveCamera fov, aspect, near, far
     scene    = new THREE.Scene
@@ -63,10 +62,10 @@ module.exports.client = ->
 
 
 
-    cubeGeometry = new THREE.CubeGeometry 1000, 1000, 1000
-    cubeMaterial = new THREE.MeshBasicMaterial color: 0xFFFFFF, wireframe: true
-    cube = new THREE.Mesh cubeGeometry, cubeMaterial
-    scene.add cube
+    # cubeGeometry = new THREE.CubeGeometry 1000, 1000, 1000
+    # cubeMaterial = new THREE.MeshBasicMaterial color: 0xFFFFFF, wireframe: true
+    # cube = new THREE.Mesh cubeGeometry, cubeMaterial
+    # scene.add cube
 
 
     pointLight = new THREE.PointLight 0xFFFFFF
@@ -77,8 +76,8 @@ module.exports.client = ->
 
 
     t = 5
-    spheres[0].velocity = [ 0.0,  1.0, 0.0 ]
-    spheres[1].velocity = [ 0.0, -1.0, 0.0 ]
+    spheres[0].velocity = [ 0.0, -1.0, 0.0 ]
+    spheres[1].velocity = [ 0.0,  1.0, 0.0 ]
     spheres[0].acceleration = new THREE.Vector3
     spheres[1].acceleration = new THREE.Vector3
     spheres[0].mass = 100.0
@@ -141,8 +140,8 @@ module.exports.client = ->
 
                 spheres[i].historyLine = new THREE.Line historyGeometry, historyMaterial
                 
-                camera.position.applyMatrix4 cameraRevolveMatrix
-                camera.lookAt scene.position
+                # camera.position.applyMatrix4 cameraRevolveMatrix
+                # camera.lookAt scene.position
 
                 scene.add spheres[i].historyLine
                 

@@ -6,7 +6,7 @@ module.exports = viewport = (opts, callback) ->
         body: """
         <body>
 
-            <script src="./build"> </script>
+            <script src="./bundle"> </script>
             <script src="./controller"> </script>
 
         </body>

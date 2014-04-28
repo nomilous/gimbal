@@ -8,16 +8,16 @@ root = (opts, callback) ->
         headers: location: '/viewport'
 
 
-root.build = (opts, callback) -> 
+root.bundle = (opts, callback) -> 
 
     callback null,
 
         headers: 'Content-Type': 'text/javascript'
-        body: readFileSync "#{__dirname}/../build/build.js"
+        body: readFileSync "#{__dirname}/../bundle.js"
 
 
 root.$www        = {}
-root.build.$www  = {}
+root.bundle.$www  = {}
 
 
 

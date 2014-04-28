@@ -20,10 +20,9 @@ node-dev lib/gimbal
 
 ```
 
-npm install -g component ipso-cli git-seed
+npm install -g browserify ipso-cli git-seed
 git seed clone # ( or pull )
-component install
-component build
+browserify -r three > bundle.js
 ipso --mocha
 
 ```
