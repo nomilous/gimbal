@@ -1,4 +1,4 @@
-`npm install gimbal` 0.0.1 [license](./license)
+`npm install gimbal` 0.0.0 [license](./license)
 
 gimbal
 ======
@@ -20,8 +20,7 @@ node-dev lib/gimbal
 
 ```
 
-npm install -g browserify ipso-cli git-seed
-git seed clone # ( or pull )
+npm install -g browserify ipso-cli
 browserify -r three > bundle.js
 ipso --mocha
 
