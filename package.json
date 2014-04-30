@@ -14,8 +14,9 @@
     "gimbal": "./bin/gimbal"
   },
   "dependencies": {
+    "express": "~4.1.1"
   },
   "devDependencies": {
-    "ipso": "0.0.21"
+    "ipso": "0.0.21"   
   }
 }
