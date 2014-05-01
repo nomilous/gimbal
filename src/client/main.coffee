@@ -3,16 +3,17 @@ require [
     'three',
 
     'realm/ui/user_interface',
+    # /js > ????
+    '/js/realm/engines/classical/classical_mechanics.js', 
     'realm/visualizer/web_g_l_visualizer'
 
-], (three, UserInterface, WebGLVisualizer) -> 
+], (three, UserInterface, ClassicalMechanics, WebGLVisualizer) -> 
 
     #
     # passing globals around for test compatability
     #
 
     globals =
-
         document: document
         THREE: THREE
         window: window
@@ -20,9 +21,16 @@ require [
 
     ui = new UserInterface globals
 
+
+    simulator = new ClassicalMechanics globals, ui, 
+
+        time: 1
+        paused: false
+
+
     renderer = new WebGLVisualizer globals, ui, 
 
-        clearColor: 0x000000
+        clearColor: 0xFF0000
         clearAlpha: 1
         fov:        120
 

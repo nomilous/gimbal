@@ -7,18 +7,21 @@ describe 'WebGLVisualizer', ->
 
         mock('window').with
             innerWidth: 100
-            innerHeight: 40
+            innerHeight: 50
 
         body = mock('body').with
-            appendChild: ->
+            appendChild: -> 
 
         mock('document').with
-            createElement: -> {}
+            createElement: -> appendChild: ->
             body: body
 
         mock('THREE').with 
             Scene: -> add: ->
             PerspectiveCamera: ->
+            WebGLRenderer: -> 
+                setSize: ->
+                setClearColor: ->
 
 
         mock 'ui'
@@ -37,9 +40,8 @@ describe 'WebGLVisualizer', ->
 
         ipso (globals, ui, WebGLVisualizer) -> 
 
-            globals.document.does createElement: -> 1 
-            globals.document.body.does appendChild: (child) ->
-                child.should.equal 1
+            globals.document.does _createElement: ->  
+            globals.document.body.does appendChild: ->
 
             new WebGLVisualizer globals, ui
 
@@ -62,7 +64,7 @@ describe 'WebGLVisualizer', ->
                 PerspectiveCamera: (fov, aspect, near, far) -> 
 
                     fov.should.equal 70
-                    aspect.should.equal 2.5
+                    aspect.should.equal 100 / 50
                     near.should.equal 1
                     far.should.equal 10000
 
@@ -73,18 +75,46 @@ describe 'WebGLVisualizer', ->
 
         ipso (globals, ui, WebGLVisualizer) ->
 
-            globals.THREE.does 
+            globals.THREE.does
 
                 PerspectiveCamera: (fov, aspect, near, far) -> 
 
                     fov.should.equal 100
-                    aspect.should.equal 2.5
+                    aspect.should.equal 100 / 50
                     near.should.equal 1
                     far.should.equal 10000
 
             new WebGLVisualizer globals, ui, 
 
                 fov: 100
+
+
+    it 'creates a new renderer with config and sets size', 
+
+        ipso (globals, ui, WebGLVisualizer) -> 
+
+            globals.THREE.does
+
+                WebGLRenderer: -> 
+                    
+                    return mock('renderer').does 
+
+                        setSize: (width, height) ->
+
+                            width.should.equal 100
+                            height.should.equal 50
+
+                        setClearColor: ->
+
+
+            new WebGLVisualizer globals, ui, 
+
+                clearColor: 0x000000
+
+
+
+
+
 
 
 
