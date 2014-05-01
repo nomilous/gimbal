@@ -4,5 +4,5 @@ define ->
 
     class UserInterface
 
-        constructor: ( init ) -> 
+        constructor: ( config ) -> 
 

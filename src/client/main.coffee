@@ -1,6 +1,22 @@
-require ['realm/ui/user_interface'], (UserInterface) -> 
+require [
+
+    'three',
+
+    'realm/ui/user_interface',
+    'realm/visualizer/web_g_l_visualizer'
+
+], (THREE, UserInterface, WebGLVisualizer) -> 
     
+
     ui = new UserInterface
+
+    renderer = new WebGLVisualizer ui, 
+
+        clearColor: 0x000000
+        clearAlpha: 1
+        fov:        120
+
+
 
 
 

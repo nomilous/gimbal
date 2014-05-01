@@ -2,7 +2,6 @@
 
 describe 'UserInterface', ->
 
-    it 'defines create', ipso (UserInterface) -> 
+    it '', ipso (UserInterface) -> 
 
-        console.log typeof UserInterface.create
-
+        console.log UserInterface
