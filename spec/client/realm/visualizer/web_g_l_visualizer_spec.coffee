@@ -8,6 +8,7 @@ describe 'WebGLVisualizer', ->
         mock('window').with
             innerWidth: 100
             innerHeight: 50
+            addEventListener: ->
 
         body = mock('body').with
             appendChild: -> 

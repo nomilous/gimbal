@@ -31,7 +31,7 @@ require [
 
     renderer = new WebGLVisualizer globals, ui, 
 
-        clearColor: 0xFF0000
+        clearColor: 0x444444
         clearAlpha: 1
         fov:        120
 

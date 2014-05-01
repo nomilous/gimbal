@@ -12,7 +12,7 @@ define ->
 
         exist: ->
 
-            
+            @visualizer.render()
 
             
 
