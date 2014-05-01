@@ -12,7 +12,8 @@ packager.mount
     name: 'js'
     src: path.join __dirname, '/client'
     scripts: [
-      'bundle.js',  # browserify -r three > lib/client/bundle.js
+      'require.js',
+      'realm/ui/user_interface.js',
       'main.js'
     ]
 
@@ -22,8 +23,7 @@ app.get '/', (req, res) ->
     res.send """
 
     <body>
-        <script src="/js/bundle.js"></script>
-        <script src="/js/main.js"></script>
+        <script src='/js/require.js' data-main="/js/main"></script>
     </body>
 
     """

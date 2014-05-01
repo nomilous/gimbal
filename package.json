@@ -16,7 +16,8 @@
   "dependencies": {
     "express": "~4.1.1",
     "three": "~0.66.2",
-    "cetera": "0.0.3"
+    "cetera": "0.0.3",
+    "amdefine": "~0.1.0"
   },
   "devDependencies": {
     "ipso": "0.0.21"

@@ -20,8 +20,7 @@ node-dev lib/gimbal
 
 ```
 
-npm install -g browserify ipso-cli
-browserify -r three > lib/client/bundle.js
+npm install -g ipso-cli
 ipso --mocha
 
 ```
