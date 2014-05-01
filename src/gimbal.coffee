@@ -13,6 +13,7 @@ packager.mount
     src: path.join __dirname, '/client'
     scripts: [
       'require.js',
+      'three.js',
       'realm/ui/user_interface.js',
       'realm/visualizer/web_g_l_visualizer.js'
       'main.js'

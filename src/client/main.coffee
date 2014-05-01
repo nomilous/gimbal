@@ -5,12 +5,22 @@ require [
     'realm/ui/user_interface',
     'realm/visualizer/web_g_l_visualizer'
 
-], (THREE, UserInterface, WebGLVisualizer) -> 
+], (three, UserInterface, WebGLVisualizer) -> 
+
+    #
+    # passing globals around for test compatability
+    #
+
+    globals =
+
+        document: document
+        THREE: THREE
+        window: window
     
 
-    ui = new UserInterface
+    ui = new UserInterface globals
 
-    renderer = new WebGLVisualizer ui, 
+    renderer = new WebGLVisualizer globals, ui, 
 
         clearColor: 0x000000
         clearAlpha: 1
