@@ -5,9 +5,10 @@ require [
     'realm/ui/user_interface',
     # /js > ????
     '/js/realm/engines/classical/classical_mechanics.js', 
-    'realm/visualizer/web_g_l_visualizer'
+    'realm/visualizer/web_g_l_visualizer',
+    '/js/realm/realm.js'
 
-], (three, UserInterface, ClassicalMechanics, WebGLVisualizer) -> 
+], (three, UserInterface, ClassicalMechanics, WebGLVisualizer, Realm) -> 
 
     #
     # passing globals around for test compatability
@@ -15,8 +16,8 @@ require [
 
     globals =
         document: document
-        THREE: THREE
         window: window
+        THREE: THREE
     
 
     ui = new UserInterface globals
@@ -35,7 +36,19 @@ require [
         fov:        120
 
 
+    realm = new Realm globals, ui, 
 
+        engine: simulator
+        visualizer: renderer
+
+
+    exist = -> 
+
+        requestAnimationFrame exist
+        realm.exist()
+
+
+    exist()
 
 
 

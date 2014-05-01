@@ -16,7 +16,8 @@ packager.mount
         'three.js',
         'realm/ui/user_interface.js',
         'realm/engines/classical/classical_mechanics.js',
-        'realm/visualizer/web_g_l_visualizer.js'
+        'realm/visualizer/web_g_l_visualizer.js',
+        'realm/realm.js',
         'main.js'
     ]
 
