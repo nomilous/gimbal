@@ -28,3 +28,19 @@ describe 'AsEventGenerator', ->
             t.registerHandler first: 'handler'
 
             t.handlers[0].should.eql first: 'handler'
+
+
+    it 'calls the specified eventFunction on each handler',
+
+        ipso (facto, AsEventGenerator) -> 
+
+            class Test
+                constructor: -> 
+                    AsEventGenerator.call @
+
+                moo: -> 
+                    @notifyHandlers 'onMoo'
+
+            t = new Test
+            t.registerHandler onMoo: -> facto()
+            t.moo()

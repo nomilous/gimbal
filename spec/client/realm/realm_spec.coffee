@@ -2,7 +2,11 @@
 
 describe 'Realm', -> 
 
-    before ipso -> 
+    before ipso (AsEventGenerator) -> 
+
+        mock('globals').with
+
+            tools: AsEventGenerator: AsEventGenerator
 
         mock('config').with
 
@@ -24,10 +28,10 @@ describe 'Realm', ->
 
         it 'assigns an id and groupid to actor and sets the actor enabled', 
 
-            ipso (should, ui, config, Realm) -> 
+            ipso (globals, should, ui, config, Realm) -> 
 
                 actor = {}
-                realm = new Realm {}, ui, config
+                realm = new Realm globals, ui, config
                 realm.registerActor actor
 
                 should.exist actor.id
@@ -37,10 +41,10 @@ describe 'Realm', ->
 
         it 'inserts the actor into the actors array', 
 
-            ipso (ui, config, Realm) -> 
+            ipso (globals, ui, config, Realm) -> 
 
                 actor = {}
-                realm = new Realm {}, ui, config
+                realm = new Realm globals, ui, config
                 realm.registerActor actor
 
                 realm.actors.length.should.equal 1
@@ -48,32 +52,32 @@ describe 'Realm', ->
 
         it 'registers the actor with the simulation engine', 
 
-            ipso (engine, ui, config, Realm) -> 
+            ipso (globals, engine, ui, config, Realm) -> 
 
                 engine.does registerActor: -> 
 
                 actor = {}
-                realm = new Realm {}, ui, config
+                realm = new Realm globals, ui, config
                 realm.registerActor actor
 
 
         it 'registers the actor with the visualizer',
 
-            ipso (visualizer, ui, config, Realm) -> 
+            ipso (globals, visualizer, ui, config, Realm) -> 
 
                 visualizer.does registerActor: -> 
 
                 actor = {}
-                realm = new Realm {}, ui, config
+                realm = new Realm globals, ui, config
                 realm.registerActor actor
 
 
         it 'registers the actor with the ui',
 
-            ipso (ui, config, Realm) -> 
+            ipso (globals, ui, config, Realm) -> 
 
                 ui.does registerActor: -> 
 
                 actor = {}
-                realm = new Realm {}, ui, config
+                realm = new Realm globals, ui, config
                 realm.registerActor actor

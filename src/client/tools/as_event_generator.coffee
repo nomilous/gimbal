@@ -7,7 +7,7 @@ define -> ->
     # 
     # AsEventGenerator.call( eventSource );
     #
-    # Will provide:
+    # Will create functions onto eventSource:
     #
     # - To register event handlers
     # 
@@ -24,8 +24,19 @@ define -> ->
     
     @handlers = []
 
+
     @registerHandler = (handler) => 
 
         @handlers.push handler
 
-    
+
+    @notifyHandlers = (event, object) =>
+
+        for handler in @handlers
+
+            if typeof handler[event] isnt 'function'
+
+                continue
+
+            handler[event].call handler, object
+

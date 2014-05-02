@@ -11,6 +11,12 @@ define ->
             @visualizer = config.visualizer
             @actors     = []
 
+            # 
+            # generates events onInsert and onDelete
+            #
+
+            globals.tools.AsEventGenerator.call @
+
         registerActor: (actor) -> 
 
             actor.id      = ++@actor_id_seq
@@ -22,6 +28,15 @@ define ->
             @engine.registerActor actor
             @visualizer.registerActor actor
             @ui.registerActor actor
+
+            @notifyHandlers 'onInsert', actor
+
+
+        deleteActor: (actor) -> 
+
+            console.log 'todo: Realm.deleteActor'
+
+            @notifyHandlers 'onDelete', actor
 
         exist: ->
 

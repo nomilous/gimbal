@@ -21,6 +21,7 @@ require [
         document: document
         window: window
         THREE: THREE
+        tools: tools
     
 
     ui = new UserInterface globals
@@ -47,9 +48,9 @@ require [
 
     realm.registerActor new BoundarySphere globals, ui,
 
-        radius : 500,
-        segments : 200,
-        rings : 200
+        radius: 500,
+        segments: 200,
+        rings: 200
 
 
     exist = -> 
