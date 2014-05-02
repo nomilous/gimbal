@@ -21,6 +21,9 @@ packager.mount
         'realm/actor.js',
         'realm/realm.js',
 
+        'tools/tools.js',
+        'tools/as_event_generator.js',
+
         'main.js',
         'require.js',
         'three.js',

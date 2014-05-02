@@ -2,6 +2,8 @@ require [
 
     'three',
 
+    '/js/tools/tools.js'
+
     'realm/ui/user_interface',
     # /js > ????
     '/js/realm/engines/classical/classical_mechanics.js',
@@ -9,7 +11,7 @@ require [
     'realm/visualizer/web_g_l_visualizer',
     '/js/realm/realm.js'
 
-], (three, UserInterface, ClassicalMechanics, BoundarySphere, WebGLVisualizer, Realm) -> 
+], (three, tools, UserInterface, ClassicalMechanics, BoundarySphere, WebGLVisualizer, Realm) -> 
 
     #
     # passing globals around for test compatability
@@ -43,7 +45,7 @@ require [
         visualizer: renderer
 
 
-    realm.registerActor new BoundrySphere globals, ui,
+    realm.registerActor new BoundarySphere globals, ui,
 
         radius : 500,
         segments : 200,

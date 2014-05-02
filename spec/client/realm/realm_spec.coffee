@@ -22,7 +22,7 @@ describe 'Realm', ->
     context 'registerActor', -> 
 
 
-        it 'assigns an id and groupid to actor and sets the actor enables', 
+        it 'assigns an id and groupid to actor and sets the actor enabled', 
 
             ipso (should, ui, config, Realm) -> 
 
@@ -70,7 +70,7 @@ describe 'Realm', ->
 
         it 'registers the actor with the ui',
 
-            ipso (visualizer, ui, config, Realm) -> 
+            ipso (ui, config, Realm) -> 
 
                 ui.does registerActor: -> 
 
