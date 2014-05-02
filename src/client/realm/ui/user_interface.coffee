@@ -6,3 +6,5 @@ define ->
 
         constructor: ( globals, config ) -> 
 
+        registerActor: (actor) -> 
+

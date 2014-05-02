@@ -16,3 +16,5 @@ define ->
 
             @ui.token = @token
 
+
+        registerActor: (actor) -> 

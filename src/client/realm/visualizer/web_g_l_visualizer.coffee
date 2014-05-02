@@ -54,3 +54,6 @@ define ->
                 camera || @camera
 
             )
+
+
+        registerActor: (actor) -> 
