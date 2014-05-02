@@ -1,10 +1,13 @@
 if typeof define isnt 'function' then define = require('amdefine')(module)
 
-define ['../realm/actor'], (Actor) -> 
+define ['../realm/actor.js'], (Actor) -> 
 
     class BoundarySphere extends Actor
 
-        constructor: ({@THREE}, @ui, config) ->
+        constructor: (globals, @ui, config) ->
+
+            #super globals, @ui, config
+            {@THREE} = globals
 
             @boundarysphere = true
             @radius   = config.radius   || 500

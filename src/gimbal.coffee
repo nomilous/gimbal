@@ -12,13 +12,18 @@ packager.mount
     name: 'js'
     src: path.join __dirname, '/client'
     scripts: [
+
+        'actors/boundary_sphere.js',
+
+        'realm/engines/classical/classical_mechanics.js',
+        'realm/ui/user_interface.js',
+        'realm/visualizer/web_g_l_visualizer.js',
+        'realm/actor.js',
+        'realm/realm.js',
+
+        'main.js',
         'require.js',
         'three.js',
-        'realm/ui/user_interface.js',
-        'realm/engines/classical/classical_mechanics.js',
-        'realm/visualizer/web_g_l_visualizer.js',
-        'realm/realm.js',
-        'main.js'
     ]
 
 

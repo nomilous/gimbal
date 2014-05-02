@@ -9,6 +9,19 @@ define ->
             @ui.realm   = @
             @engine     = config.engine
             @visualizer = config.visualizer
+            @actors     = []
+
+        registerActor: (actor) -> 
+
+            actor.id      = ++@actor_id_seq
+            actor.groupid = actor.id
+            actor.enabled = true
+
+            @actors.push actor
+
+            @engine.registerActor actor
+            @visualizer.registerActor actor
+            @ui.registerActor actor
 
         exist: ->
 

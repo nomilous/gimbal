@@ -4,6 +4,4 @@ define ->
 
     class Actor
 
-        constructor: (@ui, config) ->
-
-        
+        constructor: (globals, @ui, config) ->
