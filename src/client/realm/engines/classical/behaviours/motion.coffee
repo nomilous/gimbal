@@ -5,3 +5,5 @@ define ->
     class Motion
 
         constructor: ->
+
+            @name = 'motion'

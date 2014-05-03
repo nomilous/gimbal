@@ -5,3 +5,5 @@ define ->
     class Collision
 
         constructor: ->
+
+            @name = 'collision'

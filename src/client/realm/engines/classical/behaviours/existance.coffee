@@ -6,3 +6,4 @@ define ->
 
         constructor: ->
             
+            @name = 'existance'

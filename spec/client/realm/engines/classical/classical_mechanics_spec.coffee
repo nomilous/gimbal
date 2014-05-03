@@ -1,14 +1,22 @@
-{ipso} = require 'ipso'
+{ipso, mock} = require 'ipso'
 
 describe 'ClassicalMechanics', -> 
+
+    before ipso (AsNamedStore) -> 
+
+        mock('globals').with
+            tools: 
+                AsNamedStore: AsNamedStore 
+
+
 
 
     it """creates a token with a cycle counter, timestep, 
           paused flag and count of actors""", 
 
-            ipso (ClassicalMechanics) -> 
+            ipso (globals, ClassicalMechanics) -> 
 
-                {token} = new ClassicalMechanics {}, {}, 
+                {token} = new ClassicalMechanics globals, {}, 
 
                     time: 1
                     paused: true
@@ -21,11 +29,11 @@ describe 'ClassicalMechanics', ->
 
     it 'shares the token onto the ui', 
 
-        ipso (ClassicalMechanics, should) -> 
+        ipso (globals, ClassicalMechanics, should) -> 
 
             ui = {}
 
-            new ClassicalMechanics {}, ui
+            new ClassicalMechanics globals, ui
 
             should.exist ui.token
 

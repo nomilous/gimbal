@@ -5,3 +5,5 @@ define ->
     class Gravitation
 
         constructor: ->
+
+            @name = 'gravitation'

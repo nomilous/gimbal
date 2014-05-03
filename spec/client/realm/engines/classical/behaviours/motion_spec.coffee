@@ -11,5 +11,4 @@ describe 'Motion', ->
 
     it '', ipso (globals, ui, config, Motion) -> 
 
-
         console.log Motion

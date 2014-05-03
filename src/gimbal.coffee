@@ -33,6 +33,7 @@ packager.mount
 
         'tools/tools.js'
         'tools/as_event_generator.js'
+        'tools/as_named_store.js'
 
         'main.js'
         'require.js'
