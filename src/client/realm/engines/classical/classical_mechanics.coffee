@@ -6,7 +6,9 @@ define ->
 
         constructor: (globals, @ui, config = {}) ->
 
-            globals.tools.AsNamedStore.call @, 'behaviours'
+            #globals.tools.AsNamedStore.call @, 'behaviours'
+            @behaviours = {}
+
 
             @token = 
 
@@ -21,7 +23,7 @@ define ->
 
         registerBehaviour: (behaviour) ->
 
-            this.create_behaviours behaviour.name, behaviour
-
+            #this.create_behaviours behaviour.name, behaviour
+            @behaviours[behaviour.name] = behaviour
 
         registerActor: (actor) ->

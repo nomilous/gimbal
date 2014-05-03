@@ -6,9 +6,7 @@ describe 'ClassicalMechanics', ->
 
         mock('globals').with
             tools: 
-                AsNamedStore: AsNamedStore 
-
-
+                AsNamedStore: AsNamedStore
 
 
     it """creates a token with a cycle counter, timestep, 
@@ -32,8 +30,17 @@ describe 'ClassicalMechanics', ->
         ipso (globals, ClassicalMechanics, should) -> 
 
             ui = {}
-
             new ClassicalMechanics globals, ui
 
             should.exist ui.token
 
+
+    it 'can register behaviours', 
+
+        ipso (globals, ClassicalMechanics, should) -> 
+
+            ui = {}
+            cm = new ClassicalMechanics globals, ui
+            cm.registerBehaviour name: 'existance'
+            
+            cm.behaviours.existance.should.eql name: 'existance'
