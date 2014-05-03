@@ -57,14 +57,30 @@ define ->
 
             @token.cycle++
 
-            @token.count  = actors.length
+            #@token.count  = actors.length
             @token.actors = actors
 
+            @preSet @token
             @accumulate @token
             @apply @token
 
 
-        accumulate: (token) -> 
+        preSet: (token) ->
+
+            for name of @behaviours
+
+                behaviour = @behaviours[name]
+
+                continue unless behaviour.preSet?
+
+                for actor in token.actors
+
+                    continue unless actor.enabled
+
+                    behaviour.preSet token, actor
+
+
+        accumulate: (token) ->
 
             # 
             # Behaviour Controllers should use this pass
@@ -74,6 +90,56 @@ define ->
             # eg. Accumulate force of gravity between all
             #     pairs in the system
             # 
+
+            `
+            var i, j, behaviour;
+                    
+            for( i = 0; i < token.actors.length; i++ ) {
+                
+                if( !token.actors[i].enabled )
+                
+                    continue;
+                
+                for( j = token.actors.length; --j > i; ) { 
+                    
+                    // Each possible object pair, only once
+                    //
+                    //
+                    //    (cant seem to do --j on for loop in coffeescript)
+                    //
+                    
+                    if( !token.actors[j].enabled )
+
+                        continue;
+                        
+                    
+                    // actors in the same group do not interact
+                    
+                    if( token.actors[i].groupid == token.actors[j].groupid )
+
+                        continue;
+                    
+                
+                    for( var name in this.behaviours ) {
+
+                        behaviour = this.behaviours[name];
+                        
+                        if( behaviour.accumulate == undefined ) 
+                        
+                            continue;
+                        
+                        behaviour.accumulate(
+                             
+                            token,
+                            token.actors[i], 
+                            token.actors[j]
+                            
+                        );
+                    }
+                }
+            }
+            `
+            return
 
 
         apply: (token) ->

@@ -39,13 +39,13 @@ require [
 
     engine.registerBehaviour new Existance globals, ui
     engine.registerBehaviour new Motion globals, ui
-    engine.registerBehaviour new Gravitation globals, ui
+    engine.registerBehaviour new Gravitation globals, ui, G: 0.005
     engine.registerBehaviour new Collision globals, ui
 
 
     visualizer = new WebGLVisualizer globals, ui, 
 
-        clearColor: 0x444444
+        clearColor: 0x222222
         clearAlpha: 1
         fov:        70
 
@@ -59,31 +59,37 @@ require [
 
     {BoundarySphere, SphericalMass} = actors
 
-    realm.registerActor new BoundarySphere globals, ui,
+    # realm.registerActor new BoundarySphere globals, ui,
 
-        radius: 500,
-        segments: 200,
-        rings: 200
-        #position: new THREE.Vector3 0.0, 0.0, 0.0
-
-
-    realm.registerActor new SphericalMass globals, ui, 
-
-        radius: 50,
-        segments: 20,
-        rings: 200
-        position: new THREE.Vector3 -200.0, 0.0, -400.0
+    #     radius: 500,
+    #     segments: 200,
+    #     rings: 200
+    #     #position: new THREE.Vector3 0.0, 0.0, 0.0
 
 
     realm.registerActor new SphericalMass globals, ui, 
 
-        radius: 5,
-        segments: 20,
-        rings: 20
-        position: new THREE.Vector3 200.0, 0.0, -400.0
-        velocity: new THREE.Vector3 -2.0,  0.0,  0.0
+        gravitation: true
+        mass: 10000
+        #radius: 50,
+        segments: 100,
+        rings: 100
+        position: new THREE.Vector3 0.0, 0.0, -150.0
+        velocity: new THREE.Vector3 0.0, 0.0 , -0.02
         light:
             color : 0xFFFFFF
+
+
+    realm.registerActor new SphericalMass globals, ui, 
+
+        gravitation: true
+        mass: 200
+        #radius: 5,
+        segments: 20,
+        rings: 20
+        position: new THREE.Vector3 45.0, 0.0, -150.0
+        velocity: new THREE.Vector3 0.0,  0.0,  1.0
+        
 
 
 

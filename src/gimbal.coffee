@@ -34,6 +34,7 @@ packager.mount
         'tools/tools.js'
         'tools/as_event_generator.js'
         #'tools/as_named_store.js'
+        'tools/as_just_in_time.js'
 
         'main.js'
         'require.js'
