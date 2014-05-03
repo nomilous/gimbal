@@ -2,6 +2,8 @@
 
 describe 'Actor', -> 
 
-    it '', ipso (Actor) -> 
+    it 'assigs values from config', ipso (Actor) -> 
 
-        console.log Actor
+        a = new Actor {}, {}, key: 'Value'
+        a.key.should.equal 'Value'
+

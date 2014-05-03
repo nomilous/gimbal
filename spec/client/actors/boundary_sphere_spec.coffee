@@ -8,6 +8,7 @@ describe 'BoundarySphere', ->
             Mesh: ->
             SphereGeometry: ->
             MeshNormalMaterial: ->
+            Vector3: ->
 
     it 'creates a three sphere and inserts it into the scene', 
 

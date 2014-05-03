@@ -3,15 +3,16 @@ require [
     'three',
 
     '/js/tools/tools.js'
+    '/js/actors/actors.js'
 
     'realm/ui/user_interface',
     # /js > ????
     '/js/realm/engines/classical/classical_mechanics.js',
-    '/js/actors/boundary_sphere.js'
+   
     'realm/visualizer/web_g_l_visualizer',
     '/js/realm/realm.js'
 
-], (three, tools, UserInterface, ClassicalMechanics, BoundarySphere, WebGLVisualizer, Realm) -> 
+], (three, tools, actors, UserInterface, ClassicalMechanics, WebGLVisualizer, Realm) -> 
 
     #
     # passing globals around for test compatability
@@ -37,7 +38,7 @@ require [
 
         clearColor: 0x444444
         clearAlpha: 1
-        fov:        120
+        fov:        70
 
 
     realm = new Realm globals, ui, 
@@ -46,11 +47,35 @@ require [
         visualizer: renderer
 
 
+
+    {BoundarySphere, SphericalMass} = actors
+
     realm.registerActor new BoundarySphere globals, ui,
 
         radius: 500,
         segments: 200,
         rings: 200
+        #position: new THREE.Vector3 0.0, 0.0, 0.0
+
+
+    realm.registerActor new SphericalMass globals, ui, 
+
+        radius: 50,
+        segments: 200,
+        rings: 200
+        position: new THREE.Vector3 -200.0, 0.0, -400.0
+
+
+    realm.registerActor new SphericalMass globals, ui, 
+
+        radius: 5,
+        segments: 200,
+        rings: 200
+        position: new THREE.Vector3 200.0, 0.0, -400.0
+        light:
+            color : 0xFFFFFF
+
+
 
 
     exist = -> 

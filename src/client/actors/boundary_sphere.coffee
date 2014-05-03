@@ -1,31 +1,37 @@
 if typeof define isnt 'function' then define = require('amdefine')(module)
 
-define ['../realm/actor.js'], (Actor) -> 
+define ['../hud/hud_visible.js'], (HudVisible) -> 
 
-    class BoundarySphere extends Actor
+
+    class BoundarySphere extends HudVisible
+
 
         constructor: (globals, @ui, config) ->
 
-            #super globals, @ui, config
-            {@THREE} = globals
+            super globals, @ui, config
 
             @boundarysphere = true
-            @radius   = config.radius   || 500
-            @segments = config.segments || 30
-            @rings    = config.rings    || 30
-            @material = 
-                wireframe: true
-                wireframeLinewidth: 1
-                opacity: 0.15
+
+            {@THREE} = globals
+
+            @radius   ||= 500
+            @segments ||= 30
+            @rings    ||= 30
+            @material ||= {}
+            @material.wireframe ||= true
+            @material.wireframeLinewidth ||= 1
+            @material.opacity ||= 0.15
+            @position ||= new @THREE.Vector3 0.0, 0.0, 0.0
 
 
-        onVisRegister: (visualizer) -> 
+        onVisRegister: (visualizer) ->
 
-            @GLobject = new @THREE.Mesh(
+            {Mesh, SphereGeometry, MeshNormalMaterial} = @THREE
 
-                new @THREE.SphereGeometry @radius, @segments, @rings
-                new @THREE.MeshNormalMaterial @material
-
-            )
+            geometry  = new SphereGeometry @radius, @segments, @rings
+            material  = new MeshNormalMaterial @material
+            @GLobject = new Mesh geometry, material
 
             visualizer.scene.add @GLobject
+            @GLobject.position = @position
+

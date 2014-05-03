@@ -13,7 +13,11 @@ packager.mount
     src: path.join __dirname, '/client'
     scripts: [
 
+        'actors/actors.js'
         'actors/boundary_sphere.js',
+        'actors/spherical_mass.js',
+
+        'hud/hud_visible.js',
 
         'realm/engines/classical/classical_mechanics.js',
         'realm/ui/user_interface.js',

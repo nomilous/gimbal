@@ -57,3 +57,7 @@ define ->
 
 
         registerActor: (actor) -> 
+
+            if typeof actor.onVisRegister is 'function'
+
+                actor.onVisRegister @
