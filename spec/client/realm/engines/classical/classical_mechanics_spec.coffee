@@ -2,11 +2,9 @@
 
 describe 'ClassicalMechanics', -> 
 
-    before ipso (AsNamedStore) -> 
+    before ipso -> 
 
-        mock('globals').with
-            tools: 
-                AsNamedStore: AsNamedStore
+        mock('globals')
 
 
     it """creates a token with a cycle counter, timestep, 
@@ -42,5 +40,19 @@ describe 'ClassicalMechanics', ->
             ui = {}
             cm = new ClassicalMechanics globals, ui
             cm.registerBehaviour name: 'existance'
-            
+
             cm.behaviours.existance.should.eql name: 'existance'
+
+
+    it 'registers actors with behaviour', 
+
+        ipso (facto, globals, ClassicalMechanics, should) -> 
+
+            ui = {}
+            cm = new ClassicalMechanics globals, ui
+            cm.registerBehaviour 
+
+                name: 'existance'
+                registerActor: -> facto()
+
+            cm.registerActor {}

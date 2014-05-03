@@ -70,7 +70,7 @@ require [
     realm.registerActor new SphericalMass globals, ui, 
 
         radius: 50,
-        segments: 200,
+        segments: 20,
         rings: 200
         position: new THREE.Vector3 -200.0, 0.0, -400.0
 
@@ -78,9 +78,10 @@ require [
     realm.registerActor new SphericalMass globals, ui, 
 
         radius: 5,
-        segments: 200,
-        rings: 200
+        segments: 20,
+        rings: 20
         position: new THREE.Vector3 200.0, 0.0, -400.0
+        velocity: new THREE.Vector3 -2.0,  0.0,  0.0
         light:
             color : 0xFFFFFF
 

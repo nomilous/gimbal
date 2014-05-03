@@ -19,7 +19,7 @@ define ['../hud/hud_visible.js'], (HudVisible) ->
             @rings    ||= 20
             @material ||= {}
             @material.color ||= 0x777777
-            @position ||= new @THREE.Vector3 0.0, 0.0, 0.0
+            
 
             if @light?
 

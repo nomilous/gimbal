@@ -6,6 +6,7 @@ define ->
 
         constructor: (globals, @ui, config) -> 
 
+            @paused     = false
             @ui.realm   = @
             @engine     = config.engine
             @visualizer = config.visualizer
@@ -42,5 +43,6 @@ define ->
 
             @visualizer.render()
 
+            return if @paused
 
-
+            @engine.mainloop @actors
