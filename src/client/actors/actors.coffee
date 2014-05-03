@@ -5,7 +5,6 @@ define [
     './boundary_sphere.js',
     './spherical_mass.js'
 
-
 ], (
 
     BoundarySphere,

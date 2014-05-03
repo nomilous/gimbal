@@ -4,7 +4,7 @@ define ->
 
     class ClassicalMechanics
 
-        constructor: (globals, @ui, config = {}) -> 
+        constructor: (globals, @ui, config = {}) ->
 
             @token = 
 
@@ -17,4 +17,7 @@ define ->
             @ui.token = @token
 
 
-        registerActor: (actor) -> 
+        registerBehaviour: (behaviour) ->
+
+
+        registerActor: (actor) ->

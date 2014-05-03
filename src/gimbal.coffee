@@ -14,23 +14,29 @@ packager.mount
     scripts: [
 
         'actors/actors.js'
-        'actors/boundary_sphere.js',
-        'actors/spherical_mass.js',
+        'actors/boundary_sphere.js'
+        'actors/spherical_mass.js'
 
-        'hud/hud_visible.js',
+        'hud/hud_visible.js'
 
-        'realm/engines/classical/classical_mechanics.js',
-        'realm/ui/user_interface.js',
-        'realm/visualizer/web_g_l_visualizer.js',
-        'realm/actor.js',
-        'realm/realm.js',
+        'realm/engines/classical/classical_mechanics.js'
+        'realm/engines/classical/behaviours/behaviours.js'
+        'realm/engines/classical/behaviours/existance.js'
+        'realm/engines/classical/behaviours/motion.js'
+        'realm/engines/classical/behaviours/gravitation.js'
+        'realm/engines/classical/behaviours/collision.js'
 
-        'tools/tools.js',
-        'tools/as_event_generator.js',
+        'realm/ui/user_interface.js'
+        'realm/visualizer/web_g_l_visualizer.js'
+        'realm/actor.js'
+        'realm/realm.js'
 
-        'main.js',
-        'require.js',
-        'three.js',
+        'tools/tools.js'
+        'tools/as_event_generator.js'
+
+        'main.js'
+        'require.js'
+        'three.js'
     ]
 
 

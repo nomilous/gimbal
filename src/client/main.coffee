@@ -5,14 +5,15 @@ require [
     '/js/tools/tools.js'
     '/js/actors/actors.js'
 
-    'realm/ui/user_interface',
     # /js > ????
     '/js/realm/engines/classical/classical_mechanics.js',
-   
+    '/js/realm/engines/classical/behaviours/behaviours.js',
+    
+    'realm/ui/user_interface',
     'realm/visualizer/web_g_l_visualizer',
     '/js/realm/realm.js'
 
-], (three, tools, actors, UserInterface, ClassicalMechanics, WebGLVisualizer, Realm) -> 
+], (three, tools, actors, ClassicalMechanics, behaviours, UserInterface, WebGLVisualizer, Realm) -> 
 
     #
     # passing globals around for test compatability
@@ -32,6 +33,15 @@ require [
 
         time: 1
         paused: false
+
+
+    {Existance, Motion, Gravitation, Collision} = behaviours
+
+    simulator.registerBehaviour new Existance globals, ui
+    simulator.registerBehaviour new Motion globals, ui
+    simulator.registerBehaviour new Gravitation globals, ui
+    simulator.registerBehaviour new Collision globals, ui
+
 
 
     renderer = new WebGLVisualizer globals, ui, 
