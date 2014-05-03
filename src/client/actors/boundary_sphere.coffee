@@ -20,7 +20,7 @@ define ['../hud/hud_visible.js'], (HudVisible) ->
             @material ||= {}
             @material.wireframe ||= true
             @material.wireframeLinewidth ||= 1
-            @material.opacity ||= 0.15
+            #@material.opacity ||= 0.15
             @position ||= new @THREE.Vector3 0.0, 0.0, 0.0
 
 

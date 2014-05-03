@@ -29,7 +29,7 @@ require [
     ui = new UserInterface globals
 
 
-    simulator = new ClassicalMechanics globals, ui, 
+    engine = new ClassicalMechanics globals, ui, 
 
         time: 1
         paused: false
@@ -37,14 +37,13 @@ require [
 
     {Existance, Motion, Gravitation, Collision} = behaviours
 
-    simulator.registerBehaviour new Existance globals, ui
-    simulator.registerBehaviour new Motion globals, ui
-    simulator.registerBehaviour new Gravitation globals, ui
-    simulator.registerBehaviour new Collision globals, ui
+    engine.registerBehaviour new Existance globals, ui
+    engine.registerBehaviour new Motion globals, ui
+    engine.registerBehaviour new Gravitation globals, ui
+    engine.registerBehaviour new Collision globals, ui
 
 
-
-    renderer = new WebGLVisualizer globals, ui, 
+    visualizer = new WebGLVisualizer globals, ui, 
 
         clearColor: 0x444444
         clearAlpha: 1
@@ -53,8 +52,8 @@ require [
 
     realm = new Realm globals, ui, 
 
-        engine: simulator
-        visualizer: renderer
+        engine: engine
+        visualizer: visualizer
 
 
 
