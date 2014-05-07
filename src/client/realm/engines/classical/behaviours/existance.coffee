@@ -9,7 +9,7 @@ define ->
         constructor: ({@THREE, tools}) ->
             
             @name = 'existance'
-            {@AsJustInTime} = tools
+            {@AsJustInTime, @AsDeltaState} = tools
 
 
         registerActor: (token, actor) ->
@@ -21,6 +21,9 @@ define ->
             actor.exists     = true
             actor.mass     ||= 1.0
             actor.position ||= new @THREE.Vector3 0, 0, 0
+            # actor.history  ||= {}
+            # actor.history.length = 3
+            # actor.history.position = []
 
             unless token.pair? and token.pair.range_vector?
 
@@ -47,4 +50,39 @@ define ->
                         previous.copy( a.position ).sub( b.position )
 
                         return previous
+
+            unless token.pair.range_scalar?
+
+                #
+                # Provide a JustInTime with StateDelta on distance between Actors
+                #
+
+                @AsJustInTime.call token, 'range_scalar',
+
+                    (token, a, b, previous) => 
+
+                        unless previous
+
+                            previous = {}
+
+                            @AsDeltaState.call previous, 'range'
+
+
+                        range_vector = token.pair.range_vector token, token.cycle, a, b
+
+                        distance = Math.sqrt range_vector.dot range_vector
+
+                        previous.range.set distance
+
+                        return previous
+
+        preSet: (token, actor) ->
+
+            return unless actor.exists
+            # actor.history.position.unshift actor.position.clone()
+
+            # while actor.history.position.length > actor.history.length
+            #     actor.history.position.pop()
+
+
 

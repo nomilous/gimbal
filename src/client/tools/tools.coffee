@@ -5,6 +5,9 @@ define [
     './as_event_generator.js'
     #'./as_named_store.js'
     './as_just_in_time.js'
+    './as_state.js'
+    './as_delta_state.js'
+    './as_collision_detector.js'
 
 
 ], (
@@ -12,11 +15,17 @@ define [
     AsEventGenerator
     #AsNamedStore
     AsJustInTime
+    AsState
+    AsDeltaState
+    AsCollisionDetector
 
 ) -> 
 
     AsEventGenerator: AsEventGenerator
     #AsNamedStore: AsNamedStore
     AsJustInTime: AsJustInTime
+    AsState: AsState
+    AsDeltaState: AsDeltaState
+    AsCollisionDetector: AsCollisionDetector AsJustInTime, AsState
 
     

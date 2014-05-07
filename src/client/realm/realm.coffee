@@ -6,11 +6,12 @@ define ->
 
         constructor: (globals, @ui, config) -> 
 
-            @paused     = false
-            @ui.realm   = @
-            @engine     = config.engine
-            @visualizer = config.visualizer
-            @actors     = []
+            @actor_id_seq = 0
+            @paused       = false
+            @ui.realm     = @
+            @engine       = config.engine
+            @visualizer   = config.visualizer
+            @actors       = []
 
             # 
             # generates events onInsert and onDelete

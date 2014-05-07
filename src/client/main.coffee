@@ -59,37 +59,56 @@ require [
 
     {BoundarySphere, SphericalMass} = actors
 
-    # realm.registerActor new BoundarySphere globals, ui,
+    realm.registerActor new BoundarySphere globals, ui,
 
-    #     radius: 500,
-    #     segments: 200,
-    #     rings: 200
-    #     #position: new THREE.Vector3 0.0, 0.0, 0.0
+        radius: 100,
+        mass: 8000000000000
+        collision: {},
+        segments: 100,
+        rings: 100
+        position: new THREE.Vector3 0.0, 0.0, -200.0
 
 
     realm.registerActor new SphericalMass globals, ui, 
 
         gravitation: true
-        mass: 10000
-        #radius: 50,
+        collision: {}
+        mass: 8000
+        radius: 25,
         segments: 100,
         rings: 100
-        position: new THREE.Vector3 0.0, 0.0, -150.0
-        velocity: new THREE.Vector3 0.0, 0.0 , -0.02
+        position: new THREE.Vector3 -45.0, 0.0, -200.0
+        velocity: new THREE.Vector3 0.0, 0.0 , -0.1
+    
+
+
+    realm.registerActor new SphericalMass globals, ui, 
+
+        gravitation: true
+        collision: {}
+        mass: 800
+        radius: 10,
+        segments: 100,
+        rings: 100
+        position: new THREE.Vector3 45.0, 20.0, -200.0
+        velocity: new THREE.Vector3 0.0, 0.4 , 0.2
+        light:
+            color : 0xFFFFFF
+        
+
+    realm.registerActor new SphericalMass globals, ui, 
+
+        gravitation: true
+        collision: {}
+        mass: 800
+        radius: 15,
+        segments: 20,
+        rings: 20
+        position: new THREE.Vector3 45.0, -20.0, -200.0
+        velocity: new THREE.Vector3 0.0,  0.0,  0.5
         light:
             color : 0xFFFFFF
 
-
-    realm.registerActor new SphericalMass globals, ui, 
-
-        gravitation: true
-        mass: 200
-        #radius: 5,
-        segments: 20,
-        rings: 20
-        position: new THREE.Vector3 45.0, 0.0, -150.0
-        velocity: new THREE.Vector3 0.0,  0.0,  1.0
-        
 
 
 

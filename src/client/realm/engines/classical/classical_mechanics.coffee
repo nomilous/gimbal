@@ -63,6 +63,7 @@ define ->
             @preSet @token
             @accumulate @token
             @apply @token
+            @postSet @token
 
 
         preSet: (token) ->
@@ -180,4 +181,59 @@ define ->
 
                         behaviour.applyLinear token, actor
 
+
+        postSet: (token) ->
+
+            #
+            # All behaviours have been applied. 
+            #
+            # Apply any final adjustments to the system before
+            # passing to the visualiser
+            # 
+            # eg. Collision detection. 
+            # 
+
+            `
+            var i, j, behaviour;
+        
+            for( i = 0; i < token.actors.length; i++ ) {
+                
+                if( !token.actors[i].enabled )
+
+                    continue;
+                
+                for( j = token.actors.length; --j > i; ) { 
+                    
+                    if( !token.actors[j].enabled )
+
+                        continue;
+                        
+                    // actors in the same group do not interact
+
+                    if( token.actors[i].groupid == token.actors[j].groupid )
+
+                        continue;
+                
+                
+                    for( var name in this.behaviours ) {
+
+                        behaviour = this.behaviours[name];
+                            
+                        if( behaviour.postSet == undefined ) 
+                        
+                            continue;
+                        
+                        behaviour.postSet(
+                             
+                            token,
+                            token.actors[i], 
+                            token.actors[j]
+                            
+                        );
+                    }
+                }
+            }
+            `
+
+            return
 

@@ -7,10 +7,10 @@ gimbal
 
 ```
 
+npm install
+
 ./bin/gimbal
-
 or
-
 node-dev lib/gimbal
 
 ```

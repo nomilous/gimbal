@@ -35,6 +35,9 @@ packager.mount
         'tools/as_event_generator.js'
         #'tools/as_named_store.js'
         'tools/as_just_in_time.js'
+        'tools/as_state.js'
+        'tools/as_delta_state.js'
+        'tools/as_Collision_detector.js'
 
         'main.js'
         'require.js'
@@ -70,3 +73,5 @@ app.get '/', (req, res) ->
 
 
 app.listen 3000
+
+console.log 'http://localhost:3000'
