@@ -72,6 +72,6 @@ app.get '/', (req, res) ->
 
 
 
-app.listen 3000
+app.listen process.env.WWW_PORT || 3000, 'localhost'
 
-console.log 'http://localhost:3000'
+console.log "http://localhost:#{process.env.WWW_PORT || 3000}"

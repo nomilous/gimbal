@@ -102,8 +102,8 @@ require [
         collision: {}
         mass: 800
         radius: 15,
-        segments: 20,
-        rings: 20
+        segments: 100,
+        rings: 100
         position: new THREE.Vector3 45.0, -20.0, -200.0
         velocity: new THREE.Vector3 0.0,  0.0,  0.5
         light:
