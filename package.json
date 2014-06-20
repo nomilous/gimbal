@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "amdefine": "~0.1.0",
-    "cetera": "0.0.7",
+    "cetera": "0.0.8",
     "express": "~4.1.1",
     "three": "~0.66.2"
   },
