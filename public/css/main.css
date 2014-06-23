@@ -12,6 +12,7 @@ body {
 }
 
 .button {
+    cursor: pointer;
     color: white;
     border: 1px solid white;
     height: 20px;

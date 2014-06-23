@@ -63,6 +63,13 @@ require [
 
     {BoundarySphere, SphericalMass} = actors
 
+
+    random = (min, max) ->
+
+        span = max - min
+        Math.random() * span + min
+
+
     globals.init = ->
 
         realm.registerActor new BoundarySphere globals, ui,
@@ -83,7 +90,7 @@ require [
             radius: 25,
             segments: 100,
             rings: 100
-            position: new THREE.Vector3 -45.0, 0.0, -200.0
+            position: new THREE.Vector3 random(-50.0, 50.0), random(-50.0, 50.0), random(-150.0, -250.0)
             velocity: new THREE.Vector3 0.0, 0.0 , -0.1
         
 
@@ -96,8 +103,8 @@ require [
             radius: 5,
             segments: 100,
             rings: 100
-            position: new THREE.Vector3 45.0, 20.0, -200.0
-            velocity: new THREE.Vector3 0.0, 0.4 , 0.2
+            position: new THREE.Vector3 random(-50.0, 50.0), random(-50.0, 50.0), random(-150.0, -250.0)
+            velocity: new THREE.Vector3 random(-0.5, 0.5), random(-0.50, 0.5), random(-0.5, 0.5)
             light:
                 color : 0xFFFFFF
             
@@ -110,8 +117,8 @@ require [
             radius: 5,
             segments: 100,
             rings: 100
-            position: new THREE.Vector3 45.0, -20.0, -200.0
-            velocity: new THREE.Vector3 0.0,  0.0,  0.5
+            position: new THREE.Vector3 random(-50.0, 50.0), random(-50.0, 50.0), random(-150.0, -250.0)
+            velocity: new THREE.Vector3 random(-0.5, 0.5), random(-0.50, 0.5), random(-0.5, 0.5)
             light:
                 color : 0xFFFFFF
 
