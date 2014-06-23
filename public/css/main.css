@@ -2,12 +2,19 @@ body {
     background-color: #555555;
     margin: 0px;
     overflow: hidden;
+    font-family: "Helvetica";
+    font-style: lighter;
 }
 
 .ui {
-    border: 1px solid white;
-    width: 100px;
-    height: 100px;
     position: absolute;
     z-index: 1;
+}
+
+.button {
+    color: white;
+    border: 1px solid white;
+    height: 20px;
+    width: 100px;
+    text-align: center;
 }

@@ -42,28 +42,11 @@ packager.mount
         'main.js'
     ]
 
+app.set 'view engine', 'jade'
 
-app.get '/', (req, res) -> 
-
-    res.send """
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <title>gimbal</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <link rel="stylesheet" href="/css/main.css">
-    </head>
-    <body>
-        <script src='/js/require.js' data-main="/client/main"></script>
-        <div class="ui"><div>    
-    </body>
-    </html>
-    """
-
+app.get '/', (req, res) -> res.render 'index'
 
 app.use express.static path.normalize __dirname + '/../public'
-
 
 app.listen process.env.WWW_PORT || 3000, 'localhost'
 
