@@ -9,7 +9,7 @@ app      = express()
 packager = new (require('cetera').Packager)
 packager.mount
     app: app
-    name: 'js'
+    name: 'client'
     src: path.join __dirname, '/client'
     scripts: [
 
@@ -40,8 +40,6 @@ packager.mount
         'tools/as_Collision_detector.js'
 
         'main.js'
-        'require.js'
-        'three.js'
     ]
 
 
@@ -63,13 +61,13 @@ app.get '/', (req, res) ->
         </style>
     </head>
     <body>
-        <script src='/js/require.js' data-main="/js/main"></script>
+        <script src='/js/require.js' data-main="/client/main"></script>
     </body>
     </html>
     """
 
 
-
+app.use express.static path.normalize __dirname + '/../public'
 
 
 app.listen process.env.WWW_PORT || 3000, 'localhost'

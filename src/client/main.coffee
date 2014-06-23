@@ -1,17 +1,17 @@
 require [
 
-    'three',
+    '/js/three.js',
 
-    '/js/tools/tools.js'
-    '/js/actors/actors.js'
+    '/client/tools/tools.js'
+    '/client/actors/actors.js'
 
     # /js > ????
-    '/js/realm/engines/classical/classical_mechanics.js',
-    '/js/realm/engines/classical/behaviours/behaviours.js',
+    '/client/realm/engines/classical/classical_mechanics.js',
+    '/client/realm/engines/classical/behaviours/behaviours.js',
     
-    'realm/ui/user_interface',
-    'realm/visualizer/web_g_l_visualizer',
-    '/js/realm/realm.js'
+    '/client/realm/ui/user_interface.js',
+    '/client/realm/visualizer/web_g_l_visualizer.js',
+    '/client/realm/realm.js'
 
 ], (three, tools, actors, ClassicalMechanics, behaviours, UserInterface, WebGLVisualizer, Realm) -> 
 

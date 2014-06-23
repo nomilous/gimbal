@@ -4,7 +4,7 @@ define ->
 
     class UserInterface
 
-        constructor: ( globals, config ) -> 
+        constructor: (globals, config) ->
 
-        registerActor: (actor) -> 
+        registerActor: (actor) ->
 
