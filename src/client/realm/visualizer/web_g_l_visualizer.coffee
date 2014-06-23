@@ -69,3 +69,5 @@ define ->
         deleteActor: (actor) ->
 
             @scene.remove actor.GLobject
+            if actor.light
+                @scene.remove actor.GLobject_as_light

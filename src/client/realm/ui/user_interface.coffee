@@ -11,6 +11,7 @@ define ->
                 $scope.restart = ->
 
                     globals.realm.clear()
+                    globals.init()
 
         registerActor: (actor) ->
 
