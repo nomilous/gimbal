@@ -2,6 +2,8 @@ require [
 
     '/js/three.min.js',
 
+    '/js/angular.min.js',
+
     '/client/tools/tools.js'
     '/client/actors/actors.js'
 
@@ -13,13 +15,16 @@ require [
     '/client/realm/visualizer/web_g_l_visualizer.js',
     '/client/realm/realm.js'
 
-], (three, tools, actors, ClassicalMechanics, behaviours, UserInterface, WebGLVisualizer, Realm) -> 
+], (three, ng, tools, actors, ClassicalMechanics, behaviours, UserInterface, WebGLVisualizer, Realm) -> 
 
     #
     # passing globals around for test compatability
     #
 
+    app = angular.module 'gimbal', []
+
     globals =
+        app: app
         document: document
         window: window
         THREE: THREE
@@ -27,7 +32,6 @@ require [
     
 
     ui = new UserInterface globals
-
 
     engine = new ClassicalMechanics globals, ui, 
 
@@ -50,7 +54,7 @@ require [
         fov:        70
 
 
-    realm = new Realm globals, ui, 
+    globals.realm = realm = new Realm globals, ui, 
 
         engine: engine
         visualizer: visualizer
@@ -120,6 +124,9 @@ require [
 
 
     exist()
+
+    angular.element(document).ready ->
+        angular.bootstrap document, [ "gimbal" ]
 
 
 

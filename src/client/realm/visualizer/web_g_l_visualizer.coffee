@@ -64,3 +64,8 @@ define ->
             if typeof actor.onVisRegister is 'function'
 
                 actor.onVisRegister @
+
+
+        deleteActor: (actor) ->
+
+            @scene.remove actor.GLobject

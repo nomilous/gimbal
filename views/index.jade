@@ -9,5 +9,5 @@ html(lang="en")
 
     body
         script(src="/js/require.min.js", data-main="/client/main")
-        div.ui
-            div#restart.button restart
+        div.ui(ng-controller="UI")
+            div#restart.button(ng-click="restart()") restart

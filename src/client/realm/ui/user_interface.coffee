@@ -6,5 +6,11 @@ define ->
 
         constructor: (globals, config) ->
 
+            globals.app.controller 'UI', ($scope) ->
+
+                $scope.restart = ->
+
+                    globals.realm.clear()
+
         registerActor: (actor) ->
 

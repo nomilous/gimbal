@@ -19,6 +19,13 @@ define ->
 
             globals.tools.AsEventGenerator.call @
 
+        clear: ->
+
+            while actor = @actors.pop()
+
+                @visualizer.deleteActor actor
+
+
         registerActor: (actor) -> 
 
             actor.id      = ++@actor_id_seq
