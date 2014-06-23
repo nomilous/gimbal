@@ -1,0 +1,13 @@
+body {
+    background-color: #555555;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.ui {
+    border: 1px solid white;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    z-index: 1;
+}

@@ -9,6 +9,9 @@ define ->
         constructor: ({window, document, THREE}, @ui, config = {}) -> 
 
             @container = document.createElement 'div'
+            @container.style.position = 'absolute'
+            @container.style.top = '0px'
+            @container.style.left = '0px'
             document.body.appendChild @container
 
             @scene = new THREE.Scene

@@ -52,16 +52,11 @@ app.get '/', (req, res) ->
         <title>gimbal</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-        <style>
-            body {
-                background-color: #555555;
-                margin: 0px;
-                overflow: hidden;
-            }
-        </style>
+        <link rel="stylesheet" href="/css/main.css">
     </head>
     <body>
         <script src='/js/require.js' data-main="/client/main"></script>
+        <div class="ui"><div>    
     </body>
     </html>
     """

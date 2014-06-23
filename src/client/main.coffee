@@ -1,6 +1,6 @@
 require [
 
-    '/js/three.js',
+    '/js/three.min.js',
 
     '/client/tools/tools.js'
     '/client/actors/actors.js'
